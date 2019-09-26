@@ -1,0 +1,7 @@
+type News {
+  id: ID! @id
+  title: String!
+  date: DateTime! @createTime
+  content: String!
+  event: Event! @relation(link: INLINE)
+}

@@ -1,0 +1,28 @@
+type User {
+  id: ID! @id
+  lastName: String!
+  firstName: String!
+  email: String! @unique
+  street: String!
+  city: String!
+  NPA: Int!
+  birthday: DateTime!
+  sexe: Sexe
+  createDate: DateTime! @createDate
+  updateDate: DateTime! @updateDate
+  status: [Status]! @scalarList(strategy: RELATION)
+}
+
+enum Sexe {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum Status {
+  OJ
+  Actif
+  Moniteur
+  Comite
+  Participant # People who come to event like supportive meal
+}

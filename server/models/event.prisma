@@ -1,0 +1,26 @@
+type Event {
+  id: ID! @id
+  name: String!
+  location: String!
+  transport: Transport
+  appointment: String!
+  prices: [Prices] @scalarList(strategy: RELATION)
+  endInscription: DateTime!
+  startInscription: DateTime!
+  start: DateTime!
+  end: DateTime!
+  organizers: [User] @relation(link: TABLE, name: "EventOrganizer")
+  picture: String!
+} 
+
+type Prices {
+  id: ID! @id
+  event: Event!  @relation(link: INLINE)
+  status: [Status!]! @scalarList(strategy: RELATION)
+  price: Float!
+}
+
+enum Transport {
+  OWNCAR
+  CAR
+}
