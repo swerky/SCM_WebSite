@@ -9,7 +9,7 @@ services:
       PRISMA_CONFIG: |
         port: 4466
         databases:
-          default:
+          scm:
             connector: mysql
             host: mysql
             port: 3306
@@ -20,6 +20,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: prisma
+      MYSQL_DATABASE: scm
     volumes:
       - mysql:/var/lib/mysql
 volumes:
