@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Row, Col} from 'antd';
+import {Row, Col} from 'antd';55
 import "./SquareButton.less";
 
 const SquareButton = (props) => {

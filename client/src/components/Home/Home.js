@@ -19,9 +19,21 @@ const Home = () => {
           </Row>
           <Row className="button-container">
             <Col span={24}>
-              <Row type="flex" justify="center" gutter={[16, 0]}>
-                <Col xs={24} sm={12}><SquareButton to="/">Devenir membre</SquareButton></Col>
-                <Col xs={24} sm={12}><SquareButton to="/">Programme</SquareButton></Col>
+              <Row type="flex" justify="center" gutter={[16, 24]}>
+                <Col xs={24} sm={12}>
+                  <Row type="flex" justify="center">
+                    <Col>
+                    <SquareButton to="/">Programme</SquareButton>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <Row type="flex" justify="center">
+                    <Col>
+                      <SquareButton to="/">Devenir membre</SquareButton>
+                    </Col>
+                  </Row>
+                </Col>
               </Row>
             </Col>
           </Row>

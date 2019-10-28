@@ -8,7 +8,7 @@ const NavBar = () => {
     <Row className="nav-bar" type="flex" justify="start" align="middle">
       <Col lg={0} xl={2}></Col>
       <Col lg={8} xl={6}>
-        <h1 id="title">SKI CLUB MORGES</h1>
+        <h1 id="title">SCM</h1>
       </Col>
       <Col lg={16} xl={14}>
         <Row className="row" type="flex" justify="end" gutter={35}>
@@ -16,13 +16,13 @@ const NavBar = () => {
             <Link to="/"><h2>Programme</h2></Link>
           </Col>
           <Col>
+            <Link to="/"><h2>Devenir membre</h2></Link>
+          </Col>
+          <Col>
             <Link to="/"><h2>Contacts</h2></Link>
           </Col>
           <Col>
             <Link to="/"><h2>Galerie</h2></Link>
-          </Col>
-          <Col>
-            <Link to="/"><h2>Liens</h2></Link>
           </Col>
           <Col>
             <Link to="/"><h2>Le club</h2></Link>
