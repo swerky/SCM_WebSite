@@ -16,7 +16,11 @@
   "author": "James Smith",
   "license": "ISC",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
     "antd": "^3.24.2",
+    "apollo-boost": "^0.4.4",
+    "dotenv": "^8.2.0",
+    "graphql": "^14.5.8",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2"

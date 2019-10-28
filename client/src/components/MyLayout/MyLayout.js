@@ -8,12 +8,12 @@ const NavBar = () => {
     <Row className="nav-bar" type="flex" justify="start" align="middle">
       <Col lg={0} xl={2}></Col>
       <Col lg={8} xl={6}>
-        <h1 id="title">SCM</h1>
+        <Link to="/"><h1 id="title">SCM</h1></Link>
       </Col>
       <Col lg={16} xl={14}>
         <Row className="row" type="flex" justify="end" gutter={35}>
           <Col>
-            <Link to="/"><h2>Programme</h2></Link>
+            <Link to="/programme"><h2>Programme</h2></Link>
           </Col>
           <Col>
             <Link to="/"><h2>Devenir membre</h2></Link>
@@ -39,9 +39,9 @@ const NavBar = () => {
 
 const MyLayout = ({children}) => {
   return (
-    <div class="main-content-container">
+    <div className="main-content-container">
       <NavBar/>
-      <div class="main-content">
+      <div className="main-content">
           {children}
       </div>
     </div>

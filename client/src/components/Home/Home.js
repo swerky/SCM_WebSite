@@ -1,6 +1,6 @@
 import React from 'react';
-import SquareButton from './SquareButton';
-
+import SquareButton from '../../utils/components/SquareButton/SquareButton';
+import BackgroundImage from '../../utils/components/BackgroundImage/BackgroundImage';
 import {
   Row, 
   Col, 
@@ -11,7 +11,7 @@ import './Home.less';
 const Home = () => {
   return(
     <div className="home-container">
-      <img className="background-image-home" src="../../assets/homeBackground.jpg" alt="background image"/>
+      <BackgroundImage src="../../assets/homeBackground.jpg" alt="background image home"/>
       <Row className="row-home" type="flex" justify="center" align="middle">
         <Col className="col-home">
           <Row type="flex" justify="center">
@@ -23,14 +23,14 @@ const Home = () => {
                 <Col xs={24} sm={12}>
                   <Row type="flex" justify="center">
                     <Col>
-                    <SquareButton to="/">Programme</SquareButton>
+                    <SquareButton dest="/">Programme</SquareButton>
                     </Col>
                   </Row>
                 </Col>
                 <Col xs={24} sm={12}>
                   <Row type="flex" justify="center">
                     <Col>
-                      <SquareButton to="/">Devenir membre</SquareButton>
+                      <SquareButton dest="/">Devenir membre</SquareButton>
                     </Col>
                   </Row>
                 </Col>
