@@ -5,44 +5,46 @@ import './MyLayout.less'
 
 const NavBar = () => {
   return (
-    <nav className="nav-bar">
-      <Row type="flex" justify="start">
-        <Col span={3}>
-          <Link to="/">Accueil</Link>
-        </Col>
-        <Col span={3}>
-          <Link to="/">Programme</Link>
-        </Col>
-        <Col span={3}>
-          <Link to="/">Contacts</Link>
-        </Col>
-        <Col span={3}>
-          <Link to="/">Galerie</Link>
-        </Col>
-        <Col span={3}>
-          <Link to="/">Liens</Link>
-        </Col>
-        <Col span={3}>
-          <Link to="/">Le club</Link>
-        </Col>
-        <Col span={3}>
-          <Link to="/">News</Link>
-        </Col>
-      </Row>
-    </nav>
+    <Row className="nav-bar" type="flex" justify="start" align="middle">
+      <Col lg={0} xl={2}></Col>
+      <Col lg={8} xl={6}>
+        <h1 id="title">SKI CLUB MORGES</h1>
+      </Col>
+      <Col lg={16} xl={14}>
+        <Row className="row" type="flex" justify="end" gutter={35}>
+          <Col>
+            <Link to="/"><h2>Programme</h2></Link>
+          </Col>
+          <Col>
+            <Link to="/"><h2>Contacts</h2></Link>
+          </Col>
+          <Col>
+            <Link to="/"><h2>Galerie</h2></Link>
+          </Col>
+          <Col>
+            <Link to="/"><h2>Liens</h2></Link>
+          </Col>
+          <Col>
+            <Link to="/"><h2>Le club</h2></Link>
+          </Col>
+          <Col>
+            <Link to="/"><h2>News</h2></Link>
+          </Col>
+        </Row>
+      </Col>
+      <Col lg={0} xl={2}></Col>
+    </Row>
   );
 }
 
 const MyLayout = ({children}) => {
   return (
-    <>
+    <div class="main-content-container">
       <NavBar/>
-      <main>
-        <div className="main-container">
+      <div class="main-content">
           {children}
-        </div>
-      </main>
-    </>
+      </div>
+    </div>
   );
 }
 

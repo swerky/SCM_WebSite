@@ -1,16 +1,11 @@
+/**
+ * Fichier de config pour Babel
+ * @description Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments.
+ * @info permet de convertir le code de react en javascript compréhensible par tous les navigateurs
+ */
 const presets = [
-  [
-    "@babel/env",
-    {
-      targets: {
-        edge: "17",
-        firefox: "60",
-        chrome: "67",
-        safari: "11.1",
-      },
-      useBuiltIns: "usage",
-    },
-  ],
+  "@babel/preset-env",
+  "@babel/preset-react",
 ];
 
 const plugins = [
@@ -22,10 +17,10 @@ const plugins = [
     "import",
     {
       "libraryName": "antd",
-      "libraryDirectory": "es",
+      "libraryDirectory": "lib",
       "style": true
     },
-  ]
+  ],
 ];
 
 module.exports = { presets, plugins };

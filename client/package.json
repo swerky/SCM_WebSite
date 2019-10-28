@@ -1,41 +1,54 @@
 {
   "name": "scm-client",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Website SCM frontend",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production --config webpack.prod.js",
+    "dev": "webpack-dev-server  --config webpack.dev.js --open --inline --content-base src --history-api-fallback",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "SCM",
+    "Frontend",
+    "React"
+  ],
+  "author": "James Smith",
+  "license": "ISC",
   "dependencies": {
-    "@babel/polyfill": "^7.6.0",
     "antd": "^3.24.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.6.3",
-    "babel-plugin-import": "^1.12.2"
+    "@babel/preset-react": "^7.6.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-import": "^1.12.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "compression-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.5.1",
+    "file-loader": "^4.2.0",
+    "gzip-loader": "0.0.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "path": "^0.12.7",
+    "style-loader": "^1.0.0",
+    "uglify-js": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-manifest-plugin": "^2.2.0",
+    "webpack-merge": "^4.2.2",
+    "workbox": "0.0.0",
+    "workbox-webpack-plugin": "^4.3.1"
   }
 }
