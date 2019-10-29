@@ -425,8 +425,6 @@ type UserObject =
   | { name: 'NPA', args?: [] | false, alias?: string  } 
   | { name: 'birthday', args?: [] | false, alias?: string  } 
   | { name: 'sexe', args?: [] | false, alias?: string  } 
-  | { name: 'createDate', args?: [] | false, alias?: string  } 
-  | { name: 'updateDate', args?: [] | false, alias?: string  } 
   | { name: 'status', args?: [] | false, alias?: string  } 
 
 type UserFields =
@@ -439,8 +437,6 @@ type UserFields =
   | 'NPA'
   | 'birthday'
   | 'sexe'
-  | 'createDate'
-  | 'updateDate'
   | 'status'
 
 
@@ -524,22 +520,6 @@ export interface UserFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Sexe | null> | prisma.Sexe | null
-  }
-  createDate: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  updateDate: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
   }
   status: {
     type: 'Status'
@@ -896,7 +876,7 @@ export interface EventFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -2040,8 +2020,6 @@ type UserPreviousValuesObject =
   | { name: 'NPA', args?: [] | false, alias?: string  } 
   | { name: 'birthday', args?: [] | false, alias?: string  } 
   | { name: 'sexe', args?: [] | false, alias?: string  } 
-  | { name: 'createDate', args?: [] | false, alias?: string  } 
-  | { name: 'updateDate', args?: [] | false, alias?: string  } 
   | { name: 'status', args?: [] | false, alias?: string  } 
 
 type UserPreviousValuesFields =
@@ -2054,8 +2032,6 @@ type UserPreviousValuesFields =
   | 'NPA'
   | 'birthday'
   | 'sexe'
-  | 'createDate'
-  | 'updateDate'
   | 'status'
 
 
@@ -2139,22 +2115,6 @@ export interface UserPreviousValuesFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Sexe | null> | prisma.Sexe | null
-  }
-  createDate: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  updateDate: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
   }
   status: {
     type: 'Status'
@@ -2356,7 +2316,7 @@ export interface EventPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -2722,22 +2682,6 @@ export interface UserWhereInput {
   sexe_not?: prisma.Sexe | null
   sexe_in?: prisma.Sexe[]
   sexe_not_in?: prisma.Sexe[]
-  createDate?: string | null
-  createDate_not?: string | null
-  createDate_in?: string[]
-  createDate_not_in?: string[]
-  createDate_lt?: string | null
-  createDate_lte?: string | null
-  createDate_gt?: string | null
-  createDate_gte?: string | null
-  updateDate?: string | null
-  updateDate_not?: string | null
-  updateDate_in?: string[]
-  updateDate_not_in?: string[]
-  updateDate_lt?: string | null
-  updateDate_lte?: string | null
-  updateDate_gt?: string | null
-  updateDate_gte?: string | null
   AND?: UserWhereInput[]
   OR?: UserWhereInput[]
   NOT?: UserWhereInput[]
@@ -2848,22 +2792,6 @@ export type UserWhereInputInputObject =
   | { name: 'sexe_not', alias?: string  } 
   | { name: 'sexe_in', alias?: string  } 
   | { name: 'sexe_not_in', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'createDate_not', alias?: string  } 
-  | { name: 'createDate_in', alias?: string  } 
-  | { name: 'createDate_not_in', alias?: string  } 
-  | { name: 'createDate_lt', alias?: string  } 
-  | { name: 'createDate_lte', alias?: string  } 
-  | { name: 'createDate_gt', alias?: string  } 
-  | { name: 'createDate_gte', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
-  | { name: 'updateDate_not', alias?: string  } 
-  | { name: 'updateDate_in', alias?: string  } 
-  | { name: 'updateDate_not_in', alias?: string  } 
-  | { name: 'updateDate_lt', alias?: string  } 
-  | { name: 'updateDate_lte', alias?: string  } 
-  | { name: 'updateDate_gt', alias?: string  } 
-  | { name: 'updateDate_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -3304,8 +3232,6 @@ export interface UserCreateInput {
   NPA?: number
   birthday?: string
   sexe?: prisma.Sexe | null
-  createDate?: string
-  updateDate?: string
   status?: UserCreatestatusInput | null
 }
 export type UserCreateInputInputObject =
@@ -3319,8 +3245,6 @@ export type UserCreateInputInputObject =
   | { name: 'NPA', alias?: string  } 
   | { name: 'birthday', alias?: string  } 
   | { name: 'sexe', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
   | { name: 'status', alias?: string  } 
   
 export interface UserCreatestatusInput {
@@ -3339,8 +3263,6 @@ export interface UserUpdateInput {
   NPA?: number | null
   birthday?: string | null
   sexe?: prisma.Sexe | null
-  createDate?: string | null
-  updateDate?: string | null
   status?: UserUpdatestatusInput | null
 }
 export type UserUpdateInputInputObject =
@@ -3353,8 +3275,6 @@ export type UserUpdateInputInputObject =
   | { name: 'NPA', alias?: string  } 
   | { name: 'birthday', alias?: string  } 
   | { name: 'sexe', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
   | { name: 'status', alias?: string  } 
   
 export interface UserUpdatestatusInput {
@@ -3373,8 +3293,6 @@ export interface UserUpdateManyMutationInput {
   NPA?: number | null
   birthday?: string | null
   sexe?: prisma.Sexe | null
-  createDate?: string | null
-  updateDate?: string | null
   status?: UserUpdatestatusInput | null
 }
 export type UserUpdateManyMutationInputInputObject =
@@ -3387,8 +3305,6 @@ export type UserUpdateManyMutationInputInputObject =
   | { name: 'NPA', alias?: string  } 
   | { name: 'birthday', alias?: string  } 
   | { name: 'sexe', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
   | { name: 'status', alias?: string  } 
   
 export interface EventCreateInput {
@@ -3403,7 +3319,7 @@ export interface EventCreateInput {
   start?: string
   end?: string
   organizers?: UserCreateManyInput | null
-  picture?: string
+  picture?: string | null
 }
 export type EventCreateInputInputObject =
   | Extract<keyof EventCreateInput, string>
@@ -3656,8 +3572,6 @@ export interface UserUpdateDataInput {
   NPA?: number | null
   birthday?: string | null
   sexe?: prisma.Sexe | null
-  createDate?: string | null
-  updateDate?: string | null
   status?: UserUpdatestatusInput | null
 }
 export type UserUpdateDataInputInputObject =
@@ -3670,8 +3584,6 @@ export type UserUpdateDataInputInputObject =
   | { name: 'NPA', alias?: string  } 
   | { name: 'birthday', alias?: string  } 
   | { name: 'sexe', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
   | { name: 'status', alias?: string  } 
   
 export interface UserUpsertWithWhereUniqueNestedInput {
@@ -3790,22 +3702,6 @@ export interface UserScalarWhereInput {
   sexe_not?: prisma.Sexe | null
   sexe_in?: prisma.Sexe[]
   sexe_not_in?: prisma.Sexe[]
-  createDate?: string | null
-  createDate_not?: string | null
-  createDate_in?: string[]
-  createDate_not_in?: string[]
-  createDate_lt?: string | null
-  createDate_lte?: string | null
-  createDate_gt?: string | null
-  createDate_gte?: string | null
-  updateDate?: string | null
-  updateDate_not?: string | null
-  updateDate_in?: string[]
-  updateDate_not_in?: string[]
-  updateDate_lt?: string | null
-  updateDate_lte?: string | null
-  updateDate_gt?: string | null
-  updateDate_gte?: string | null
   AND?: UserScalarWhereInput[]
   OR?: UserScalarWhereInput[]
   NOT?: UserScalarWhereInput[]
@@ -3916,22 +3812,6 @@ export type UserScalarWhereInputInputObject =
   | { name: 'sexe_not', alias?: string  } 
   | { name: 'sexe_in', alias?: string  } 
   | { name: 'sexe_not_in', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'createDate_not', alias?: string  } 
-  | { name: 'createDate_in', alias?: string  } 
-  | { name: 'createDate_not_in', alias?: string  } 
-  | { name: 'createDate_lt', alias?: string  } 
-  | { name: 'createDate_lte', alias?: string  } 
-  | { name: 'createDate_gt', alias?: string  } 
-  | { name: 'createDate_gte', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
-  | { name: 'updateDate_not', alias?: string  } 
-  | { name: 'updateDate_in', alias?: string  } 
-  | { name: 'updateDate_not_in', alias?: string  } 
-  | { name: 'updateDate_lt', alias?: string  } 
-  | { name: 'updateDate_lte', alias?: string  } 
-  | { name: 'updateDate_gt', alias?: string  } 
-  | { name: 'updateDate_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -3954,8 +3834,6 @@ export interface UserUpdateManyDataInput {
   NPA?: number | null
   birthday?: string | null
   sexe?: prisma.Sexe | null
-  createDate?: string | null
-  updateDate?: string | null
   status?: UserUpdatestatusInput | null
 }
 export type UserUpdateManyDataInputInputObject =
@@ -3968,8 +3846,6 @@ export type UserUpdateManyDataInputInputObject =
   | { name: 'NPA', alias?: string  } 
   | { name: 'birthday', alias?: string  } 
   | { name: 'sexe', alias?: string  } 
-  | { name: 'createDate', alias?: string  } 
-  | { name: 'updateDate', alias?: string  } 
   | { name: 'status', alias?: string  } 
   
 export interface EventUpdateManyMutationInput {
@@ -4028,7 +3904,7 @@ export interface EventCreateWithoutPricesInput {
   start?: string
   end?: string
   organizers?: UserCreateManyInput | null
-  picture?: string
+  picture?: string | null
 }
 export type EventCreateWithoutPricesInputInputObject =
   | Extract<keyof EventCreateWithoutPricesInput, string>
@@ -4324,10 +4200,6 @@ export type UserOrderByInputValues =
   | 'birthday_DESC'
   | 'sexe_ASC'
   | 'sexe_DESC'
-  | 'createDate_ASC'
-  | 'createDate_DESC'
-  | 'updateDate_ASC'
-  | 'updateDate_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

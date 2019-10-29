@@ -1,14 +1,48 @@
 // Variables
+@screen-width-xs: 768px;
+@screen-width-sm: 768px;
+@screen-width-md: 992px;
+@screen-width-lg: 1200px;
+
 @navBarSize: 6em;
 
-.nav-bar {
-  top: 0;
-  height: @navBarSize;
-  width: 100%;
-  position: fixed;
-  z-index: 1;
+@media screen and (min-width: @screen-width-lg) {
+  .nav-bar {
+    top: 0;
+    height: @navBarSize;
+    width: 100%;
+    position: fixed;
+    z-index: 50;
+  }
 }
 
+/* MOBILE */
+
+@media screen and (max-width: @screen-width-lg) {
+  .nav-bar {
+    top: 0;
+    height: @navBarSize;
+    width: 100%;
+    position: fixed;
+    z-index: 50;
+    font-size: 0.8em;
+  }
+}
+
+.drawer {
+  width: 15em;
+}
+
+.divider {
+  margin: 16px 0;
+}
+
+.menu-icon {
+  font-size: 2em;
+  color: #FAFAFA;
+}
+
+/* Content */
 .main-content {
   padding-top: 7em;
 }
@@ -20,4 +54,8 @@
 #title {
   font-weight: 900;
   letter-spacing:0.05em;
+}
+
+.nav-mobile-text {
+  color: black;
 }

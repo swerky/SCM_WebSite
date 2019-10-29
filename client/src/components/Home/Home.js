@@ -11,7 +11,6 @@ import './Home.less';
 const Home = () => {
   return(
     <div className="home-container">
-      <BackgroundImage src="../../assets/homeBackground.jpg" alt="background image home"/>
       <Row className="row-home" type="flex" justify="center" align="middle">
         <Col className="col-home">
           <Row type="flex" justify="center">
@@ -23,7 +22,7 @@ const Home = () => {
                 <Col xs={24} sm={12}>
                   <Row type="flex" justify="center">
                     <Col>
-                    <SquareButton dest="/">Programme</SquareButton>
+                    <SquareButton dest="/programme">Programme</SquareButton>
                     </Col>
                   </Row>
                 </Col>

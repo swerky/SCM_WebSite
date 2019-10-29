@@ -36,7 +36,7 @@ type Event {
   start: DateTime!
   end: DateTime!
   organizers(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
-  picture: String!
+  picture: String
 }
 
 type EventConnection {
@@ -57,7 +57,7 @@ input EventCreateInput {
   start: DateTime!
   end: DateTime!
   organizers: UserCreateManyInput
-  picture: String!
+  picture: String
 }
 
 input EventCreateOneInput {
@@ -81,7 +81,7 @@ input EventCreateWithoutPricesInput {
   start: DateTime!
   end: DateTime!
   organizers: UserCreateManyInput
-  picture: String!
+  picture: String
 }
 
 type EventEdge {
@@ -122,7 +122,7 @@ type EventPreviousValues {
   startInscription: DateTime!
   start: DateTime!
   end: DateTime!
-  picture: String!
+  picture: String
 }
 
 type EventSubscriptionPayload {
@@ -762,8 +762,6 @@ type User {
   NPA: Int!
   birthday: DateTime!
   sexe: Sexe
-  createDate: DateTime!
-  updateDate: DateTime!
   status: [Status!]!
 }
 
@@ -783,8 +781,6 @@ input UserCreateInput {
   NPA: Int!
   birthday: DateTime!
   sexe: Sexe
-  createDate: DateTime!
-  updateDate: DateTime!
   status: UserCreatestatusInput
 }
 
@@ -821,10 +817,6 @@ enum UserOrderByInput {
   birthday_DESC
   sexe_ASC
   sexe_DESC
-  createDate_ASC
-  createDate_DESC
-  updateDate_ASC
-  updateDate_DESC
 }
 
 type UserPreviousValues {
@@ -837,8 +829,6 @@ type UserPreviousValues {
   NPA: Int!
   birthday: DateTime!
   sexe: Sexe
-  createDate: DateTime!
-  updateDate: DateTime!
   status: [Status!]!
 }
 
@@ -947,22 +937,6 @@ input UserScalarWhereInput {
   sexe_not: Sexe
   sexe_in: [Sexe!]
   sexe_not_in: [Sexe!]
-  createDate: DateTime
-  createDate_not: DateTime
-  createDate_in: [DateTime!]
-  createDate_not_in: [DateTime!]
-  createDate_lt: DateTime
-  createDate_lte: DateTime
-  createDate_gt: DateTime
-  createDate_gte: DateTime
-  updateDate: DateTime
-  updateDate_not: DateTime
-  updateDate_in: [DateTime!]
-  updateDate_not_in: [DateTime!]
-  updateDate_lt: DateTime
-  updateDate_lte: DateTime
-  updateDate_gt: DateTime
-  updateDate_gte: DateTime
   AND: [UserScalarWhereInput!]
   OR: [UserScalarWhereInput!]
   NOT: [UserScalarWhereInput!]
@@ -995,8 +969,6 @@ input UserUpdateDataInput {
   NPA: Int
   birthday: DateTime
   sexe: Sexe
-  createDate: DateTime
-  updateDate: DateTime
   status: UserUpdatestatusInput
 }
 
@@ -1009,8 +981,6 @@ input UserUpdateInput {
   NPA: Int
   birthday: DateTime
   sexe: Sexe
-  createDate: DateTime
-  updateDate: DateTime
   status: UserUpdatestatusInput
 }
 
@@ -1023,8 +993,6 @@ input UserUpdateManyDataInput {
   NPA: Int
   birthday: DateTime
   sexe: Sexe
-  createDate: DateTime
-  updateDate: DateTime
   status: UserUpdatestatusInput
 }
 
@@ -1049,8 +1017,6 @@ input UserUpdateManyMutationInput {
   NPA: Int
   birthday: DateTime
   sexe: Sexe
-  createDate: DateTime
-  updateDate: DateTime
   status: UserUpdatestatusInput
 }
 
@@ -1179,22 +1145,6 @@ input UserWhereInput {
   sexe_not: Sexe
   sexe_in: [Sexe!]
   sexe_not_in: [Sexe!]
-  createDate: DateTime
-  createDate_not: DateTime
-  createDate_in: [DateTime!]
-  createDate_not_in: [DateTime!]
-  createDate_lt: DateTime
-  createDate_lte: DateTime
-  createDate_gt: DateTime
-  createDate_gte: DateTime
-  updateDate: DateTime
-  updateDate_not: DateTime
-  updateDate_in: [DateTime!]
-  updateDate_not_in: [DateTime!]
-  updateDate_lt: DateTime
-  updateDate_lte: DateTime
-  updateDate_gt: DateTime
-  updateDate_gte: DateTime
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

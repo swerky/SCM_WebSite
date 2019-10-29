@@ -1,46 +1,127 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
-import { Row, Col } from 'antd';
-import './MyLayout.less'
+import { Row, Col, Drawer, Icon, Divider} from 'antd';
+import Media from 'react-media';
 
+import './MyLayout.less';
+
+/* PATH */
+const pathHome = "/";
+const pathProgramme = "/programme";
+const pathMember = "/devenirmembre";
+const pathContacts = "/";
+const pathGalerie = "/";
+const pathClub = "/";
+const pathNews = "/";
+
+/* NAVBAR DESKTOP */
 const NavBar = () => {
   return (
     <Row className="nav-bar" type="flex" justify="start" align="middle">
-      <Col lg={0} xl={2}></Col>
-      <Col lg={8} xl={6}>
-        <Link to="/"><h1 id="title">SCM</h1></Link>
+      <Col lg={1} xl={2}></Col>
+      <Col lg={1} xl={2}>
+        <Link to={pathHome}><h1 id="title">SCM</h1></Link>
       </Col>
-      <Col lg={16} xl={14}>
+      <Col lg={21} xl={18}>
         <Row className="row" type="flex" justify="end" gutter={35}>
           <Col>
-            <Link to="/programme"><h2>Programme</h2></Link>
+            <Link to={pathProgramme}><h2>Programme</h2></Link>
           </Col>
           <Col>
-            <Link to="/"><h2>Devenir membre</h2></Link>
+            <Link to={pathMember}><h2>Devenir membre</h2></Link>
           </Col>
           <Col>
-            <Link to="/"><h2>Contacts</h2></Link>
+            <Link to={pathContacts}><h2>Contacts</h2></Link>
           </Col>
           <Col>
-            <Link to="/"><h2>Galerie</h2></Link>
+            <Link to={pathGalerie}><h2>Galerie</h2></Link>
           </Col>
           <Col>
-            <Link to="/"><h2>Le club</h2></Link>
+            <Link to={pathClub}><h2>Le club</h2></Link>
           </Col>
           <Col>
-            <Link to="/"><h2>News</h2></Link>
+            <Link to={pathNews}><h2>News</h2></Link>
           </Col>
         </Row>
       </Col>
-      <Col lg={0} xl={2}></Col>
+      <Col lg={1} xl={2}></Col>
     </Row>
+  );
+}
+
+/* NAVBAR MOBILE */
+const NavBarMobile = () => {
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
+
+  return (
+    <>
+      <Row className="nav-bar" type="flex" justify="end" align="middle">
+        <Col span={2}><Icon className="menu-icon" onClick={showDrawer} type="menu" /></Col>
+      </Row>
+      <Drawer
+          placement="right"
+          closable={true}
+          onClose={onClose}
+          visible={visible}
+          width={350}
+          maskStyle={{backgroundColor: 'transparent'}}
+        >
+          <Link to={pathHome}onClick={onClose}><h2 className="nav-mobile-text" id="title">SCM</h2></Link>
+          <Divider className="divider"/>
+          <ElementNavMobile to={pathProgramme} icon="calendar" text="Programme" onClose={onClose}/>
+          <Divider className="divider"/>
+          <ElementNavMobile to={pathMember} icon="solution" text="Devenir membre" onClose={onClose}/>
+          <Divider className="divider"/>
+          <ElementNavMobile to={pathContacts} icon="contacts" text="Contacts" onClose={onClose}/>
+          <Divider className="divider"/>
+          <ElementNavMobile to={pathGalerie} icon="picture" text="Galerie" onClose={onClose}/>
+          <Divider className="divider"/>
+          <ElementNavMobile to={pathClub} icon="team" text="Le club" onClose={onClose}/>
+          <Divider className="divider"/>
+          <ElementNavMobile to={pathNews} icon="mail" text="News" onClose={onClose}/>
+          <Divider className="divider"/>
+        </Drawer>
+    </>
+  );
+}
+
+/* Element inside liste nav mobile */
+const ElementNavMobile = (props) => {
+  const {to, icon, text, onClose} = props;
+  return (
+    <Link to={to} onClick={onClose}>
+      <Row type="flex" align="middle">
+        <Col span={6}>
+          <Icon type={icon} />
+        </Col>
+        <Col span={18}>
+          <h3 className="nav-mobile-text">{text}</h3>
+        </Col>
+      </Row>
+    </Link>
   );
 }
 
 const MyLayout = ({children}) => {
   return (
-    <div className="main-content-container">
-      <NavBar/>
+    <div>
+      <Media queries={{ small: { maxWidth: '768px' } }}>
+        {matches =>
+          matches.small ? (
+            <NavBarMobile/>
+          ) : (
+            <NavBar/>
+          )
+        }
+      </Media>
       <div className="main-content">
           {children}
       </div>

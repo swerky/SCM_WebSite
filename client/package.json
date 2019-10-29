@@ -20,9 +20,11 @@
     "antd": "^3.24.2",
     "apollo-boost": "^0.4.4",
     "dotenv": "^8.2.0",
+    "dotenv-webpack": "^1.7.0",
     "graphql": "^14.5.8",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-media": "^1.10.0",
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {

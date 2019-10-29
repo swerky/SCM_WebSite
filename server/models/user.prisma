@@ -8,8 +8,6 @@ type User {
   NPA: Int!
   birthday: DateTime!
   sexe: Sexe
-  createDate: DateTime! @createDate
-  updateDate: DateTime! @updateDate
   status: [Status]! @scalarList(strategy: RELATION)
 }
 

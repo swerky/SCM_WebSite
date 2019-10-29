@@ -32,7 +32,7 @@ type Event {
   location: String!
   name: String!
   organizers(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]
-  picture: String!
+  picture: String
   prices(after: String, before: String, first: Int, last: Int, orderBy: PricesOrderByInput, skip: Int, where: PricesWhereInput): [Prices!]
   start: DateTime!
   startInscription: DateTime!
@@ -53,7 +53,7 @@ input EventCreateInput {
   location: String!
   name: String!
   organizers: UserCreateManyInput
-  picture: String!
+  picture: String
   prices: PricesCreateManyWithoutEventInput
   start: DateTime!
   startInscription: DateTime!
@@ -78,7 +78,7 @@ input EventCreateWithoutPricesInput {
   location: String!
   name: String!
   organizers: UserCreateManyInput
-  picture: String!
+  picture: String
   start: DateTime!
   startInscription: DateTime!
   transport: Transport
@@ -669,7 +669,6 @@ enum Transport {
 type User {
   birthday: DateTime!
   city: String!
-  createDate: DateTime!
   email: String!
   firstName: String!
   id: ID!
@@ -678,7 +677,6 @@ type User {
   sexe: Sexe
   status: [Status!]!
   street: String!
-  updateDate: DateTime!
 }
 
 type UserConnection {
@@ -690,7 +688,6 @@ type UserConnection {
 input UserCreateInput {
   birthday: DateTime!
   city: String!
-  createDate: DateTime!
   email: String!
   firstName: String!
   id: ID
@@ -699,7 +696,6 @@ input UserCreateInput {
   sexe: Sexe
   status: UserCreatestatusInput
   street: String!
-  updateDate: DateTime!
 }
 
 input UserCreateManyInput {
@@ -723,8 +719,6 @@ enum UserOrderByInput {
   city_DESC
   createdAt_ASC
   createdAt_DESC
-  createDate_ASC
-  createDate_DESC
   email_ASC
   email_DESC
   firstName_ASC
@@ -741,8 +735,6 @@ enum UserOrderByInput {
   street_DESC
   updatedAt_ASC
   updatedAt_DESC
-  updateDate_ASC
-  updateDate_DESC
 }
 
 input UserScalarWhereInput {
@@ -769,14 +761,6 @@ input UserScalarWhereInput {
   city_not_in: [String!]
   city_not_starts_with: String
   city_starts_with: String
-  createDate: DateTime
-  createDate_gt: DateTime
-  createDate_gte: DateTime
-  createDate_in: [DateTime!]
-  createDate_lt: DateTime
-  createDate_lte: DateTime
-  createDate_not: DateTime
-  createDate_not_in: [DateTime!]
   email: String
   email_contains: String
   email_ends_with: String
@@ -861,20 +845,11 @@ input UserScalarWhereInput {
   street_not_in: [String!]
   street_not_starts_with: String
   street_starts_with: String
-  updateDate: DateTime
-  updateDate_gt: DateTime
-  updateDate_gte: DateTime
-  updateDate_in: [DateTime!]
-  updateDate_lt: DateTime
-  updateDate_lte: DateTime
-  updateDate_not: DateTime
-  updateDate_not_in: [DateTime!]
 }
 
 input UserUpdateDataInput {
   birthday: DateTime
   city: String
-  createDate: DateTime
   email: String
   firstName: String
   lastName: String
@@ -882,13 +857,11 @@ input UserUpdateDataInput {
   sexe: Sexe
   status: UserUpdatestatusInput
   street: String
-  updateDate: DateTime
 }
 
 input UserUpdateInput {
   birthday: DateTime
   city: String
-  createDate: DateTime
   email: String
   firstName: String
   lastName: String
@@ -896,13 +869,11 @@ input UserUpdateInput {
   sexe: Sexe
   status: UserUpdatestatusInput
   street: String
-  updateDate: DateTime
 }
 
 input UserUpdateManyDataInput {
   birthday: DateTime
   city: String
-  createDate: DateTime
   email: String
   firstName: String
   lastName: String
@@ -910,7 +881,6 @@ input UserUpdateManyDataInput {
   sexe: Sexe
   status: UserUpdatestatusInput
   street: String
-  updateDate: DateTime
 }
 
 input UserUpdateManyInput {
@@ -928,7 +898,6 @@ input UserUpdateManyInput {
 input UserUpdateManyMutationInput {
   birthday: DateTime
   city: String
-  createDate: DateTime
   email: String
   firstName: String
   lastName: String
@@ -936,7 +905,6 @@ input UserUpdateManyMutationInput {
   sexe: Sexe
   status: UserUpdatestatusInput
   street: String
-  updateDate: DateTime
 }
 
 input UserUpdateManyWithWhereNestedInput {
@@ -983,14 +951,6 @@ input UserWhereInput {
   city_not_in: [String!]
   city_not_starts_with: String
   city_starts_with: String
-  createDate: DateTime
-  createDate_gt: DateTime
-  createDate_gte: DateTime
-  createDate_in: [DateTime!]
-  createDate_lt: DateTime
-  createDate_lte: DateTime
-  createDate_not: DateTime
-  createDate_not_in: [DateTime!]
   email: String
   email_contains: String
   email_ends_with: String
@@ -1075,14 +1035,6 @@ input UserWhereInput {
   street_not_in: [String!]
   street_not_starts_with: String
   street_starts_with: String
-  updateDate: DateTime
-  updateDate_gt: DateTime
-  updateDate_gte: DateTime
-  updateDate_in: [DateTime!]
-  updateDate_lt: DateTime
-  updateDate_lte: DateTime
-  updateDate_not: DateTime
-  updateDate_not_in: [DateTime!]
 }
 
 input UserWhereUniqueInput {

@@ -1,14 +1,11 @@
-@screen-width-xs: 768px;
-@screen-width-sm: 768px;
-@screen-width-md: 992px;
-@screen-width-lg: 1200px;
-@nav-bar-height: 7em;
+.more-info-icon {
+  font-size: 1.3em;
+}
 
-.home-container {
+.programme-container {
   width: 100%;
   height: 100vh;
-  padding-bottom: @nav-bar-height;
-  background-image: url(../../assets/homeBackground.jpg);
+  background-image: url(../../assets/programmeBackground.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -16,7 +13,8 @@
   top: 0;
   padding-top: 6em;
 }
-.home-container:before {
+
+.programme-container:before {
   transition-delay: 1.25s;
   -moz-transition: opacity 3s ease;
   -webkit-transition: opacity 3s ease;
@@ -34,7 +32,7 @@
   z-index: 1;
 }
 
-.home-container .row-home {
+.programme-container .programme-row {
   -moz-transform: scale(1.0);
   -webkit-transform: scale(1.0);
   -ms-transform: scale(1.0);
@@ -46,43 +44,4 @@
   opacity: 1;
   position: relative;
   z-index: 2;
-}
-
-.row-home {
-  margin-top:-7em;
-  height: 100vh;
-  width: 100%;
-  z-index: 2;
-}
-
-.col-home {
-  line-height: 4em;
-  height: auto;
-  text-align: center;
-  color: #FAFAFA;
-}
-
-@media screen and (min-width: @screen-width-lg) {
-  .welcome-title {
-    font-size: 5em;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-}
-
-@media screen and (max-width: @screen-width-lg) {
-  .welcome-title {
-    font-size: 3em;
-    font-weight: 400;
-    text-transform: uppercase;
-  }
-}
-
-.btn-welcome {
-  width: 9.5em;
-  height: 2.2em!important;
-}
-
-.button-container {
-  margin-top: 2em;
 }

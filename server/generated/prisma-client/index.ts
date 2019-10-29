@@ -248,11 +248,7 @@ export type UserOrderByInput =
   | "birthday_ASC"
   | "birthday_DESC"
   | "sexe_ASC"
-  | "sexe_DESC"
-  | "createDate_ASC"
-  | "createDate_DESC"
-  | "updateDate_ASC"
-  | "updateDate_DESC";
+  | "sexe_DESC";
 
 export type EventOrderByInput =
   | "id_ASC"
@@ -544,22 +540,6 @@ export interface UserWhereInput {
   sexe_not?: Maybe<Sexe>;
   sexe_in?: Maybe<Sexe[] | Sexe>;
   sexe_not_in?: Maybe<Sexe[] | Sexe>;
-  createDate?: Maybe<DateTimeInput>;
-  createDate_not?: Maybe<DateTimeInput>;
-  createDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createDate_lt?: Maybe<DateTimeInput>;
-  createDate_lte?: Maybe<DateTimeInput>;
-  createDate_gt?: Maybe<DateTimeInput>;
-  createDate_gte?: Maybe<DateTimeInput>;
-  updateDate?: Maybe<DateTimeInput>;
-  updateDate_not?: Maybe<DateTimeInput>;
-  updateDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updateDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updateDate_lt?: Maybe<DateTimeInput>;
-  updateDate_lte?: Maybe<DateTimeInput>;
-  updateDate_gt?: Maybe<DateTimeInput>;
-  updateDate_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<UserWhereInput[] | UserWhereInput>;
   OR?: Maybe<UserWhereInput[] | UserWhereInput>;
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
@@ -647,7 +627,7 @@ export interface EventCreateInput {
   start: DateTimeInput;
   end: DateTimeInput;
   organizers?: Maybe<UserCreateManyInput>;
-  picture: String;
+  picture?: Maybe<String>;
 }
 
 export interface PricesCreateManyWithoutEventInput {
@@ -682,8 +662,6 @@ export interface UserCreateInput {
   NPA: Int;
   birthday: DateTimeInput;
   sexe?: Maybe<Sexe>;
-  createDate: DateTimeInput;
-  updateDate: DateTimeInput;
   status?: Maybe<UserCreatestatusInput>;
 }
 
@@ -820,8 +798,6 @@ export interface UserUpdateDataInput {
   NPA?: Maybe<Int>;
   birthday?: Maybe<DateTimeInput>;
   sexe?: Maybe<Sexe>;
-  createDate?: Maybe<DateTimeInput>;
-  updateDate?: Maybe<DateTimeInput>;
   status?: Maybe<UserUpdatestatusInput>;
 }
 
@@ -940,22 +916,6 @@ export interface UserScalarWhereInput {
   sexe_not?: Maybe<Sexe>;
   sexe_in?: Maybe<Sexe[] | Sexe>;
   sexe_not_in?: Maybe<Sexe[] | Sexe>;
-  createDate?: Maybe<DateTimeInput>;
-  createDate_not?: Maybe<DateTimeInput>;
-  createDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createDate_lt?: Maybe<DateTimeInput>;
-  createDate_lte?: Maybe<DateTimeInput>;
-  createDate_gt?: Maybe<DateTimeInput>;
-  createDate_gte?: Maybe<DateTimeInput>;
-  updateDate?: Maybe<DateTimeInput>;
-  updateDate_not?: Maybe<DateTimeInput>;
-  updateDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updateDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updateDate_lt?: Maybe<DateTimeInput>;
-  updateDate_lte?: Maybe<DateTimeInput>;
-  updateDate_gt?: Maybe<DateTimeInput>;
-  updateDate_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
   OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
   NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
@@ -975,8 +935,6 @@ export interface UserUpdateManyDataInput {
   NPA?: Maybe<Int>;
   birthday?: Maybe<DateTimeInput>;
   sexe?: Maybe<Sexe>;
-  createDate?: Maybe<DateTimeInput>;
-  updateDate?: Maybe<DateTimeInput>;
   status?: Maybe<UserUpdatestatusInput>;
 }
 
@@ -1067,7 +1025,7 @@ export interface EventCreateWithoutPricesInput {
   start: DateTimeInput;
   end: DateTimeInput;
   organizers?: Maybe<UserCreateManyInput>;
-  picture: String;
+  picture?: Maybe<String>;
 }
 
 export interface PricesUpdateInput {
@@ -1115,8 +1073,6 @@ export interface UserUpdateInput {
   NPA?: Maybe<Int>;
   birthday?: Maybe<DateTimeInput>;
   sexe?: Maybe<Sexe>;
-  createDate?: Maybe<DateTimeInput>;
-  updateDate?: Maybe<DateTimeInput>;
   status?: Maybe<UserUpdatestatusInput>;
 }
 
@@ -1129,8 +1085,6 @@ export interface UserUpdateManyMutationInput {
   NPA?: Maybe<Int>;
   birthday?: Maybe<DateTimeInput>;
   sexe?: Maybe<Sexe>;
-  createDate?: Maybe<DateTimeInput>;
-  updateDate?: Maybe<DateTimeInput>;
   status?: Maybe<UserUpdatestatusInput>;
 }
 
@@ -1192,7 +1146,7 @@ export interface Event {
   startInscription: DateTimeOutput;
   start: DateTimeOutput;
   end: DateTimeOutput;
-  picture: String;
+  picture?: String;
 }
 
 export interface EventPromise extends Promise<Event>, Fragmentable {
@@ -1333,8 +1287,6 @@ export interface User {
   NPA: Int;
   birthday: DateTimeOutput;
   sexe?: Sexe;
-  createDate: DateTimeOutput;
-  updateDate: DateTimeOutput;
   status: Status[];
 }
 
@@ -1348,8 +1300,6 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   NPA: () => Promise<Int>;
   birthday: () => Promise<DateTimeOutput>;
   sexe: () => Promise<Sexe>;
-  createDate: () => Promise<DateTimeOutput>;
-  updateDate: () => Promise<DateTimeOutput>;
   status: () => Promise<Status[]>;
 }
 
@@ -1365,8 +1315,6 @@ export interface UserSubscription
   NPA: () => Promise<AsyncIterator<Int>>;
   birthday: () => Promise<AsyncIterator<DateTimeOutput>>;
   sexe: () => Promise<AsyncIterator<Sexe>>;
-  createDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updateDate: () => Promise<AsyncIterator<DateTimeOutput>>;
   status: () => Promise<AsyncIterator<Status[]>>;
 }
 
@@ -1382,8 +1330,6 @@ export interface UserNullablePromise
   NPA: () => Promise<Int>;
   birthday: () => Promise<DateTimeOutput>;
   sexe: () => Promise<Sexe>;
-  createDate: () => Promise<DateTimeOutput>;
-  updateDate: () => Promise<DateTimeOutput>;
   status: () => Promise<Status[]>;
 }
 
@@ -1712,7 +1658,7 @@ export interface EventPreviousValues {
   startInscription: DateTimeOutput;
   start: DateTimeOutput;
   end: DateTimeOutput;
-  picture: String;
+  picture?: String;
 }
 
 export interface EventPreviousValuesPromise
@@ -1877,8 +1823,6 @@ export interface UserPreviousValues {
   NPA: Int;
   birthday: DateTimeOutput;
   sexe?: Sexe;
-  createDate: DateTimeOutput;
-  updateDate: DateTimeOutput;
   status: Status[];
 }
 
@@ -1894,8 +1838,6 @@ export interface UserPreviousValuesPromise
   NPA: () => Promise<Int>;
   birthday: () => Promise<DateTimeOutput>;
   sexe: () => Promise<Sexe>;
-  createDate: () => Promise<DateTimeOutput>;
-  updateDate: () => Promise<DateTimeOutput>;
   status: () => Promise<Status[]>;
 }
 
@@ -1911,8 +1853,6 @@ export interface UserPreviousValuesSubscription
   NPA: () => Promise<AsyncIterator<Int>>;
   birthday: () => Promise<AsyncIterator<DateTimeOutput>>;
   sexe: () => Promise<AsyncIterator<Sexe>>;
-  createDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updateDate: () => Promise<AsyncIterator<DateTimeOutput>>;
   status: () => Promise<AsyncIterator<Status[]>>;
 }
 

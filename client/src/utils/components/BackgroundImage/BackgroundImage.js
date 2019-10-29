@@ -4,7 +4,7 @@ import './BackgroundImage.less';
 const BackgroundImage = (props) => {
   const {src,alt} = props;
   return (
-    <img className="background-image" src={src} alt={alt}/>
+    <div className="background-image" src={src} alt={alt}/>
   );
 }
 

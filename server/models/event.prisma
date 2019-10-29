@@ -10,7 +10,7 @@ type Event {
   start: DateTime!
   end: DateTime!
   organizers: [User] @relation(link: TABLE, name: "EventOrganizer")
-  picture: String!
+  picture: String
 } 
 
 type Prices {

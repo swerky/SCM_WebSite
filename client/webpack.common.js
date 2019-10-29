@@ -2,6 +2,7 @@ const webpack = require("webpack"); // librairie principal pour faire le webpack
 const CopyWebpackPlugin = require('copy-webpack-plugin'); // Permet de copier des fichiers dans le dossier de build
 const path = require("path");       // Permet d'accèder au fichier système
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -22,6 +23,7 @@ module.exports = {
     settings: path.resolve(__dirname, "src/components/Settings/Settings.js")"*/
   },
   plugins: [
+    new Dotenv(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: "'development'",
@@ -93,7 +95,8 @@ module.exports = {
             options: {modifyVars: {
                 //'primary-color': '#1DA57A',
                 'link-color': '#000000',
-                'text-color': '#000000',
+                'text-color': '#FAFAFA',
+                'heading-color': '#FAFAFA',
                 //'border-radius-base': '2px',
                 'font-size-base': '20px',
                 'font-family': "'Raleway', Helvetica, sans-serif",

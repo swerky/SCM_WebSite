@@ -19,7 +19,7 @@ export interface NexusGenInputs {
     location: string; // String!
     name: string; // String!
     organizers?: NexusGenInputs['UserCreateManyInput'] | null; // UserCreateManyInput
-    picture: string; // String!
+    picture?: string | null; // String
     prices?: NexusGenInputs['PricesCreateManyWithoutEventInput'] | null; // PricesCreateManyWithoutEventInput
     start: any; // DateTime!
     startInscription: any; // DateTime!
@@ -41,7 +41,7 @@ export interface NexusGenInputs {
     location: string; // String!
     name: string; // String!
     organizers?: NexusGenInputs['UserCreateManyInput'] | null; // UserCreateManyInput
-    picture: string; // String!
+    picture?: string | null; // String
     start: any; // DateTime!
     startInscription: any; // DateTime!
     transport?: NexusGenEnums['Transport'] | null; // Transport
@@ -435,7 +435,6 @@ export interface NexusGenInputs {
   UserCreateInput: { // input type
     birthday: any; // DateTime!
     city: string; // String!
-    createDate: any; // DateTime!
     email: string; // String!
     firstName: string; // String!
     id?: string | null; // ID
@@ -444,7 +443,6 @@ export interface NexusGenInputs {
     sexe?: NexusGenEnums['Sexe'] | null; // Sexe
     status?: NexusGenInputs['UserCreatestatusInput'] | null; // UserCreatestatusInput
     street: string; // String!
-    updateDate: any; // DateTime!
   }
   UserCreateManyInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'][] | null; // [UserWhereUniqueInput!]
@@ -477,14 +475,6 @@ export interface NexusGenInputs {
     city_not_in?: string[] | null; // [String!]
     city_not_starts_with?: string | null; // String
     city_starts_with?: string | null; // String
-    createDate?: any | null; // DateTime
-    createDate_gt?: any | null; // DateTime
-    createDate_gte?: any | null; // DateTime
-    createDate_in?: any[] | null; // [DateTime!]
-    createDate_lt?: any | null; // DateTime
-    createDate_lte?: any | null; // DateTime
-    createDate_not?: any | null; // DateTime
-    createDate_not_in?: any[] | null; // [DateTime!]
     email?: string | null; // String
     email_contains?: string | null; // String
     email_ends_with?: string | null; // String
@@ -569,19 +559,10 @@ export interface NexusGenInputs {
     street_not_in?: string[] | null; // [String!]
     street_not_starts_with?: string | null; // String
     street_starts_with?: string | null; // String
-    updateDate?: any | null; // DateTime
-    updateDate_gt?: any | null; // DateTime
-    updateDate_gte?: any | null; // DateTime
-    updateDate_in?: any[] | null; // [DateTime!]
-    updateDate_lt?: any | null; // DateTime
-    updateDate_lte?: any | null; // DateTime
-    updateDate_not?: any | null; // DateTime
-    updateDate_not_in?: any[] | null; // [DateTime!]
   }
   UserUpdateDataInput: { // input type
     birthday?: any | null; // DateTime
     city?: string | null; // String
-    createDate?: any | null; // DateTime
     email?: string | null; // String
     firstName?: string | null; // String
     lastName?: string | null; // String
@@ -589,12 +570,10 @@ export interface NexusGenInputs {
     sexe?: NexusGenEnums['Sexe'] | null; // Sexe
     status?: NexusGenInputs['UserUpdatestatusInput'] | null; // UserUpdatestatusInput
     street?: string | null; // String
-    updateDate?: any | null; // DateTime
   }
   UserUpdateInput: { // input type
     birthday?: any | null; // DateTime
     city?: string | null; // String
-    createDate?: any | null; // DateTime
     email?: string | null; // String
     firstName?: string | null; // String
     lastName?: string | null; // String
@@ -602,12 +581,10 @@ export interface NexusGenInputs {
     sexe?: NexusGenEnums['Sexe'] | null; // Sexe
     status?: NexusGenInputs['UserUpdatestatusInput'] | null; // UserUpdatestatusInput
     street?: string | null; // String
-    updateDate?: any | null; // DateTime
   }
   UserUpdateManyDataInput: { // input type
     birthday?: any | null; // DateTime
     city?: string | null; // String
-    createDate?: any | null; // DateTime
     email?: string | null; // String
     firstName?: string | null; // String
     lastName?: string | null; // String
@@ -615,7 +592,6 @@ export interface NexusGenInputs {
     sexe?: NexusGenEnums['Sexe'] | null; // Sexe
     status?: NexusGenInputs['UserUpdatestatusInput'] | null; // UserUpdatestatusInput
     street?: string | null; // String
-    updateDate?: any | null; // DateTime
   }
   UserUpdateManyInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'][] | null; // [UserWhereUniqueInput!]
@@ -631,7 +607,6 @@ export interface NexusGenInputs {
   UserUpdateManyMutationInput: { // input type
     birthday?: any | null; // DateTime
     city?: string | null; // String
-    createDate?: any | null; // DateTime
     email?: string | null; // String
     firstName?: string | null; // String
     lastName?: string | null; // String
@@ -639,7 +614,6 @@ export interface NexusGenInputs {
     sexe?: NexusGenEnums['Sexe'] | null; // Sexe
     status?: NexusGenInputs['UserUpdatestatusInput'] | null; // UserUpdatestatusInput
     street?: string | null; // String
-    updateDate?: any | null; // DateTime
   }
   UserUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['UserUpdateManyDataInput']; // UserUpdateManyDataInput!
@@ -681,14 +655,6 @@ export interface NexusGenInputs {
     city_not_in?: string[] | null; // [String!]
     city_not_starts_with?: string | null; // String
     city_starts_with?: string | null; // String
-    createDate?: any | null; // DateTime
-    createDate_gt?: any | null; // DateTime
-    createDate_gte?: any | null; // DateTime
-    createDate_in?: any[] | null; // [DateTime!]
-    createDate_lt?: any | null; // DateTime
-    createDate_lte?: any | null; // DateTime
-    createDate_not?: any | null; // DateTime
-    createDate_not_in?: any[] | null; // [DateTime!]
     email?: string | null; // String
     email_contains?: string | null; // String
     email_ends_with?: string | null; // String
@@ -773,14 +739,6 @@ export interface NexusGenInputs {
     street_not_in?: string[] | null; // [String!]
     street_not_starts_with?: string | null; // String
     street_starts_with?: string | null; // String
-    updateDate?: any | null; // DateTime
-    updateDate_gt?: any | null; // DateTime
-    updateDate_gte?: any | null; // DateTime
-    updateDate_in?: any[] | null; // [DateTime!]
-    updateDate_lt?: any | null; // DateTime
-    updateDate_lte?: any | null; // DateTime
-    updateDate_not?: any | null; // DateTime
-    updateDate_not_in?: any[] | null; // [DateTime!]
   }
   UserWhereUniqueInput: { // input type
     email?: string | null; // String
@@ -795,7 +753,7 @@ export interface NexusGenEnums {
   Sexe: "FEMALE" | "MALE" | "OTHER"
   Status: "Actif" | "Comite" | "Moniteur" | "OJ" | "Participant"
   Transport: "CAR" | "OWNCAR"
-  UserOrderByInput: "birthday_ASC" | "birthday_DESC" | "city_ASC" | "city_DESC" | "createdAt_ASC" | "createdAt_DESC" | "createDate_ASC" | "createDate_DESC" | "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "NPA_ASC" | "NPA_DESC" | "sexe_ASC" | "sexe_DESC" | "street_ASC" | "street_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "updateDate_ASC" | "updateDate_DESC"
+  UserOrderByInput: "birthday_ASC" | "birthday_DESC" | "city_ASC" | "city_DESC" | "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "NPA_ASC" | "NPA_DESC" | "sexe_ASC" | "sexe_DESC" | "street_ASC" | "street_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
@@ -821,7 +779,7 @@ export interface NexusGenRootTypes {
     id: string; // ID!
     location: string; // String!
     name: string; // String!
-    picture: string; // String!
+    picture?: string | null; // String
     start: any; // DateTime!
     startInscription: any; // DateTime!
     transport?: NexusGenEnums['Transport'] | null; // Transport
@@ -872,7 +830,6 @@ export interface NexusGenRootTypes {
   User: { // root type
     birthday: any; // DateTime!
     city: string; // String!
-    createDate: any; // DateTime!
     email: string; // String!
     firstName: string; // String!
     id: string; // ID!
@@ -881,7 +838,6 @@ export interface NexusGenRootTypes {
     sexe?: NexusGenEnums['Sexe'] | null; // Sexe
     status: NexusGenEnums['Status'][]; // [Status!]!
     street: string; // String!
-    updateDate: any; // DateTime!
   }
   UserConnection: { // root type
     edges: NexusGenRootTypes['UserEdge'][]; // [UserEdge!]!
@@ -984,7 +940,7 @@ export interface NexusGenFieldTypes {
     location: string; // String!
     name: string; // String!
     organizers: NexusGenRootTypes['User'][] | null; // [User!]
-    picture: string; // String!
+    picture: string | null; // String
     prices: NexusGenRootTypes['Prices'][] | null; // [Prices!]
     start: any; // DateTime!
     startInscription: any; // DateTime!
@@ -1079,7 +1035,6 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     birthday: any; // DateTime!
     city: string; // String!
-    createDate: any; // DateTime!
     email: string; // String!
     firstName: string; // String!
     id: string; // ID!
@@ -1088,7 +1043,6 @@ export interface NexusGenFieldTypes {
     sexe: NexusGenEnums['Sexe'] | null; // Sexe
     status: NexusGenEnums['Status'][]; // [Status!]!
     street: string; // String!
-    updateDate: any; // DateTime!
   }
   UserConnection: { // field return type
     aggregate: NexusGenRootTypes['AggregateUser']; // AggregateUser!
