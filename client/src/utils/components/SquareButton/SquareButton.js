@@ -4,13 +4,11 @@ import {Row, Col} from 'antd';55
 import "./SquareButton.less";
 
 const SquareButton = (props) => {
-  const {dest, children} = props;
+  const {children} = props;
   return (
     <Row className="square-button" justify="center">
       <Col>
-        <Link className="square-button-link" to={dest}>
-          {children}
-        </Link>
+        {children}
       </Col>
     </Row>
   );

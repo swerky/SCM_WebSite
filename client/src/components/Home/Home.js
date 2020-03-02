@@ -6,12 +6,14 @@ import {
   Col, 
   Button
 } from 'antd';
+import {Link} from 'react-router-dom';
 import './Home.less';
 
 const Home = () => {
   return(
-    <div className="home-container">
-      <Row className="row-home" type="flex" justify="center" align="middle">
+    <>
+      <div className="home-background"/>
+      <Row className="home-container" type="flex" justify="center" align="middle">
         <Col className="col-home">
           <Row type="flex" justify="center">
             <Col span={24}><span className="welcome-title">Ski Club Morges</span></Col>
@@ -22,14 +24,18 @@ const Home = () => {
                 <Col xs={24} sm={12}>
                   <Row type="flex" justify="center">
                     <Col>
-                    <SquareButton dest="/programme">Programme</SquareButton>
+                    <Link to="/programme">
+                      <SquareButton>Programme</SquareButton>
+                    </Link>
                     </Col>
                   </Row>
                 </Col>
                 <Col xs={24} sm={12}>
                   <Row type="flex" justify="center">
                     <Col>
-                      <SquareButton dest="/">Devenir membre</SquareButton>
+                      <Link to="/devenirmembre">
+                        <SquareButton dest="/devenirmembre">Devenir membre</SquareButton>
+                      </Link>
                     </Col>
                   </Row>
                 </Col>
@@ -38,7 +44,7 @@ const Home = () => {
           </Row>
         </Col>
       </Row> 
-    </div>  
+    </>  
   )
 }
 

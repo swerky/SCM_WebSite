@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import {Link} from 'react-router-dom';
 import { Row, Col, Drawer, Icon, Divider} from 'antd';
 import Media from 'react-media';
 
 import './MyLayout.less';
+import { useScroll } from '../../hooks/useScroll';
 
 /* PATH */
 const pathHome = "/";
@@ -16,28 +17,30 @@ const pathNews = "/";
 
 /* NAVBAR DESKTOP */
 const NavBar = () => {
+  const scroll = useScroll();
+
   return (
-    <Row className="nav-bar" type="flex" justify="start" align="middle">
+    <Row className={scroll.y > 0 ? "nav-bar-not-top": "nav-bar"} type="flex" justify="start" align="middle">
       <Col lg={1} xl={2}></Col>
       <Col lg={1} xl={2}>
-        <Link to={pathHome}><h1 id="title">SCM</h1></Link>
+        <Link to={pathHome}><h1 id="title" className={scroll.y > 0 ? "title-color-not-top": ""}>SCM</h1></Link>
       </Col>
       <Col lg={21} xl={18}>
         <Row className="row" type="flex" justify="end" gutter={35}>
           <Col>
-            <Link to={pathProgramme}><h2>Programme</h2></Link>
+            <Link to={pathProgramme}><h2 className={scroll.y > 0 ? "title-color-not-top": ""}>Programme</h2></Link>
           </Col>
           <Col>
-            <Link to={pathMember}><h2>Devenir membre</h2></Link>
+            <Link to={pathMember}><h2 className={scroll.y > 0 ? "title-color-not-top": ""}>Devenir membre</h2></Link>
           </Col>
           <Col>
-            <Link to={pathContacts}><h2>Contacts</h2></Link>
+            <Link to={pathContacts}><h2 className={scroll.y > 0 ? "title-color-not-top": ""}>Contacts</h2></Link>
           </Col>
           <Col>
-            <Link to={pathGalerie}><h2>Galerie</h2></Link>
+            <Link to={pathGalerie}><h2 className={scroll.y > 0 ? "title-color-not-top": ""}>Galerie</h2></Link>
           </Col>
           <Col>
-            <Link to={pathClub}><h2>Le club</h2></Link>
+            <Link to={pathClub}><h2 className={scroll.y > 0 ? "title-color-not-top": ""}>Le club</h2></Link>
           </Col>
           <Col>
             <Link to={pathNews}><h2>News</h2></Link>
@@ -74,7 +77,7 @@ const NavBarMobile = () => {
           width={350}
           maskStyle={{backgroundColor: 'transparent'}}
         >
-          <Link to={pathHome}onClick={onClose}><h2 className="nav-mobile-text" id="title">SCM</h2></Link>
+          <Link to={pathHome}onClick={onClose}><h2 className="nav-mobile-content" id="title">SCM</h2></Link>
           <Divider className="divider"/>
           <ElementNavMobile to={pathProgramme} icon="calendar" text="Programme" onClose={onClose}/>
           <Divider className="divider"/>
@@ -100,10 +103,10 @@ const ElementNavMobile = (props) => {
     <Link to={to} onClick={onClose}>
       <Row type="flex" align="middle">
         <Col span={6}>
-          <Icon type={icon} />
+          <Icon className="nav-mobile-content" type={icon} />
         </Col>
         <Col span={18}>
-          <h3 className="nav-mobile-text">{text}</h3>
+          <h3 className="nav-mobile-content" >{text}</h3>
         </Col>
       </Row>
     </Link>

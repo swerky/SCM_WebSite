@@ -9,9 +9,12 @@ type Event {
   startInscription: DateTime!
   start: DateTime!
   end: DateTime!
+  offert: String ## What do we offert for this price (transport, tickets, etc)
+  informations: String
   organizers: [User] @relation(link: TABLE, name: "EventOrganizer")
   picture: String
 } 
+
 
 type Prices {
   id: ID! @id

@@ -25,8 +25,9 @@ const Programme = () => {
   );
 
   return (
-    <div className="programme-container">
-      <Row className="programme-row" type="flex" justify="center">
+    <>
+      <div className="programme-background"/>
+      <Row className="programme-container" type="flex" justify="center">
         <Col span={20}>
           <Row type="flex">
             <Col span={6}><h2>Quoi</h2></Col>
@@ -54,7 +55,7 @@ const Programme = () => {
           })}
         </Col>
       </Row>
-    </div>
+    </>
   );
 }
 

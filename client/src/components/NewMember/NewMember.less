@@ -1,11 +1,99 @@
-.newmember-container {
+@screen-width-xs: 768px;
+@screen-width-sm: 768px;
+@screen-width-md: 992px;
+@screen-width-lg: 1200px;
+
+.newmember-background {
   width: 100%;
   height: 100vh;
   background-image: url(../../assets/programmeBackground.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   top: 0;
   padding-top: 6em;
 }
+
+.newmember-background:before {
+  transition-delay: 1.25s;
+  -moz-transition: opacity 3s ease;
+  -webkit-transition: opacity 3s ease;
+  -ms-transition: opacity 3s ease;
+  transition: opacity 3s ease;
+  content: '';
+  background-color: #000;
+  display: block;
+  opacity: 0.3;
+  position: fixed;
+  z-index: 1;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+.newmember-container {
+  -moz-transform: scale(1.0);
+  -webkit-transform: scale(1.0);
+  -ms-transform: scale(1.0);
+  transform: scale(1.0);
+  -moz-transition: opacity 1s ease, -moz-transform 1s ease;
+  -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+  -ms-transition: opacity 1s ease, -ms-transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease;
+  opacity: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.card-status h3 ,
+.card-status h4, 
+.card-status div,
+.card-status p {
+  color: black;
+}
+
+.card-status {
+  background-color: #FAFAFA; 
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E8E8E8;
+  width: 100%;
+  height: 21em;
+  padding: 2em;
+}
+
+.card-status ul {
+  padding-inline-start: 5px;
+}
+
+.newmember-btn-container {
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+@media screen and (min-width: @screen-width-sm) {
+  .card-status {
+    margin-bottom: 20px;
+  }
+
+  .price-container{
+    bottom: 0;
+    position: absolute;
+    width: calc(100% - 4em);
+    margin-bottom: 2em;
+  }
+}
+
+@media screen and (max-width: @screen-width-sm) {
+  .card-status {
+    height: auto;
+  }
+
+  .price-container{
+    position: relative;
+    width: calc(100% - 4em);
+  }
+}
+
