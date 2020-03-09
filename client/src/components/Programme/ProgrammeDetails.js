@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Spin, Alert, Icon} from 'antd';
+import { Row, Col, Spin, Alert } from 'antd';
 
 const Payment = (props) =>{
   const {end} = props;

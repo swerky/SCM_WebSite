@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Tag } from 'antd';
 import {useQuery} from '@apollo/react-hooks';
 import {GET_EVENTS} from '../../queries/events.queries';
-import {Spin, Alert, Icon} from 'antd';
+import { Spin, Alert } from 'antd';
 import moment from 'moment';
 
 moment.locale('fr');
