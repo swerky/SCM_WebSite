@@ -100,7 +100,7 @@ module.exports = {
                 //'border-radius-base': '2px',
                 'font-size-base': '20px',
                 'font-family': "'Raleway', Helvetica, sans-serif",
-                'body-background': "#003399",
+                //'body-background': "#003399",
                 'input-color':"#000000",
                 // or
                 //'hack': `true; @import "./index.less";`, // Override with less file

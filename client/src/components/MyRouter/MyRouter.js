@@ -5,6 +5,16 @@ import Programme from '../Programme/Programme';
 import NotFound from '../../utils/components/NotFound/NotFound';
 import NewMember from '../NewMember/NewMember';
 import NewMemberFormContainer from '../NewMember/NewMemberFormContainer';
+import AdminUserView from '../AdminUser/AdminUserView';
+import AdminLayout from '../Admin/AdminLayout';
+
+const AdminRoute = ({path, component}) => {
+  return (
+    <AdminLayout>
+      <Route path={path} exact component={component}/>
+    </AdminLayout>
+  );
+}
 
 const MyRouter = () => {
   return (
@@ -13,6 +23,7 @@ const MyRouter = () => {
       <Route path="/programme" exact component={Programme}/>
       <Route path="/devenirmembre" exact component={NewMember}/>
       <Route path="/devenirmembre/form" exact component={NewMemberFormContainer}/>
+      <AdminRoute path="/admin" component={AdminUserView}/>
       <Route component={NotFound}/>
     </Switch>
   );
