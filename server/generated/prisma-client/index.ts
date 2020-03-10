@@ -18,7 +18,7 @@ export type Maybe<T> = T | undefined | null;
 export interface Exists {
   event: (where?: EventWhereInput) => Promise<boolean>;
   news: (where?: NewsWhereInput) => Promise<boolean>;
-  prices: (where?: PricesWhereInput) => Promise<boolean>;
+  price: (where?: PriceWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
 }
 
@@ -79,25 +79,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => NewsConnectionPromise;
-  prices: (where: PricesWhereUniqueInput) => PricesNullablePromise;
-  priceses: (args?: {
-    where?: PricesWhereInput;
-    orderBy?: PricesOrderByInput;
+  price: (where: PriceWhereUniqueInput) => PriceNullablePromise;
+  prices: (args?: {
+    where?: PriceWhereInput;
+    orderBy?: PriceOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<Prices>;
-  pricesesConnection: (args?: {
-    where?: PricesWhereInput;
-    orderBy?: PricesOrderByInput;
+  }) => FragmentableArray<Price>;
+  pricesConnection: (args?: {
+    where?: PriceWhereInput;
+    orderBy?: PriceOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => PricesConnectionPromise;
+  }) => PriceConnectionPromise;
   user: (where: UserWhereUniqueInput) => UserNullablePromise;
   users: (args?: {
     where?: UserWhereInput;
@@ -155,22 +155,22 @@ export interface Prisma {
   }) => NewsPromise;
   deleteNews: (where: NewsWhereUniqueInput) => NewsPromise;
   deleteManyNewses: (where?: NewsWhereInput) => BatchPayloadPromise;
-  createPrices: (data: PricesCreateInput) => PricesPromise;
-  updatePrices: (args: {
-    data: PricesUpdateInput;
-    where: PricesWhereUniqueInput;
-  }) => PricesPromise;
-  updateManyPriceses: (args: {
-    data: PricesUpdateManyMutationInput;
-    where?: PricesWhereInput;
+  createPrice: (data: PriceCreateInput) => PricePromise;
+  updatePrice: (args: {
+    data: PriceUpdateInput;
+    where: PriceWhereUniqueInput;
+  }) => PricePromise;
+  updateManyPrices: (args: {
+    data: PriceUpdateManyMutationInput;
+    where?: PriceWhereInput;
   }) => BatchPayloadPromise;
-  upsertPrices: (args: {
-    where: PricesWhereUniqueInput;
-    create: PricesCreateInput;
-    update: PricesUpdateInput;
-  }) => PricesPromise;
-  deletePrices: (where: PricesWhereUniqueInput) => PricesPromise;
-  deleteManyPriceses: (where?: PricesWhereInput) => BatchPayloadPromise;
+  upsertPrice: (args: {
+    where: PriceWhereUniqueInput;
+    create: PriceCreateInput;
+    update: PriceUpdateInput;
+  }) => PricePromise;
+  deletePrice: (where: PriceWhereUniqueInput) => PricePromise;
+  deleteManyPrices: (where?: PriceWhereInput) => BatchPayloadPromise;
   createUser: (data: UserCreateInput) => UserPromise;
   updateUser: (args: {
     data: UserUpdateInput;
@@ -202,9 +202,9 @@ export interface Subscription {
   news: (
     where?: NewsSubscriptionWhereInput
   ) => NewsSubscriptionPayloadSubscription;
-  prices: (
-    where?: PricesSubscriptionWhereInput
-  ) => PricesSubscriptionPayloadSubscription;
+  price: (
+    where?: PriceSubscriptionWhereInput
+  ) => PriceSubscriptionPayloadSubscription;
   user: (
     where?: UserSubscriptionWhereInput
   ) => UserSubscriptionPayloadSubscription;
@@ -222,7 +222,7 @@ export type Transport = "OWNCAR" | "CAR";
 
 export type Sexe = "MALE" | "FEMALE" | "OTHER";
 
-export type PricesOrderByInput =
+export type PriceOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "price_ASC"
@@ -292,7 +292,7 @@ export type EventWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface PricesWhereInput {
+export interface PriceWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -316,9 +316,9 @@ export interface PricesWhereInput {
   price_lte?: Maybe<Float>;
   price_gt?: Maybe<Float>;
   price_gte?: Maybe<Float>;
-  AND?: Maybe<PricesWhereInput[] | PricesWhereInput>;
-  OR?: Maybe<PricesWhereInput[] | PricesWhereInput>;
-  NOT?: Maybe<PricesWhereInput[] | PricesWhereInput>;
+  AND?: Maybe<PriceWhereInput[] | PriceWhereInput>;
+  OR?: Maybe<PriceWhereInput[] | PriceWhereInput>;
+  NOT?: Maybe<PriceWhereInput[] | PriceWhereInput>;
 }
 
 export interface EventWhereInput {
@@ -382,9 +382,9 @@ export interface EventWhereInput {
   appointment_not_starts_with?: Maybe<String>;
   appointment_ends_with?: Maybe<String>;
   appointment_not_ends_with?: Maybe<String>;
-  prices_every?: Maybe<PricesWhereInput>;
-  prices_some?: Maybe<PricesWhereInput>;
-  prices_none?: Maybe<PricesWhereInput>;
+  prices_every?: Maybe<PriceWhereInput>;
+  prices_some?: Maybe<PriceWhereInput>;
+  prices_none?: Maybe<PriceWhereInput>;
   endInscription?: Maybe<DateTimeInput>;
   endInscription_not?: Maybe<DateTimeInput>;
   endInscription_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -638,7 +638,7 @@ export interface NewsWhereInput {
   NOT?: Maybe<NewsWhereInput[] | NewsWhereInput>;
 }
 
-export type PricesWhereUniqueInput = AtLeastOne<{
+export type PriceWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
@@ -653,7 +653,7 @@ export interface EventCreateInput {
   location: String;
   transport?: Maybe<Transport>;
   appointment: String;
-  prices?: Maybe<PricesCreateManyWithoutEventInput>;
+  prices?: Maybe<PriceCreateManyWithoutEventInput>;
   endInscription: DateTimeInput;
   startInscription: DateTimeInput;
   start: DateTimeInput;
@@ -664,20 +664,18 @@ export interface EventCreateInput {
   picture?: Maybe<String>;
 }
 
-export interface PricesCreateManyWithoutEventInput {
-  create?: Maybe<
-    PricesCreateWithoutEventInput[] | PricesCreateWithoutEventInput
-  >;
-  connect?: Maybe<PricesWhereUniqueInput[] | PricesWhereUniqueInput>;
+export interface PriceCreateManyWithoutEventInput {
+  create?: Maybe<PriceCreateWithoutEventInput[] | PriceCreateWithoutEventInput>;
+  connect?: Maybe<PriceWhereUniqueInput[] | PriceWhereUniqueInput>;
 }
 
-export interface PricesCreateWithoutEventInput {
+export interface PriceCreateWithoutEventInput {
   id?: Maybe<ID_Input>;
-  status?: Maybe<PricesCreatestatusInput>;
+  status?: Maybe<PriceCreatestatusInput>;
   price: Float;
 }
 
-export interface PricesCreatestatusInput {
+export interface PriceCreatestatusInput {
   set?: Maybe<Status[] | Status>;
 }
 
@@ -695,7 +693,7 @@ export interface UserCreateInput {
   city: String;
   NPA: Int;
   birthday: DateTimeInput;
-  sexe?: Maybe<Sexe>;
+  sexe: Sexe;
   status?: Maybe<UserCreatestatusInput>;
 }
 
@@ -708,7 +706,7 @@ export interface EventUpdateInput {
   location?: Maybe<String>;
   transport?: Maybe<Transport>;
   appointment?: Maybe<String>;
-  prices?: Maybe<PricesUpdateManyWithoutEventInput>;
+  prices?: Maybe<PriceUpdateManyWithoutEventInput>;
   endInscription?: Maybe<DateTimeInput>;
   startInscription?: Maybe<DateTimeInput>;
   start?: Maybe<DateTimeInput>;
@@ -719,50 +717,47 @@ export interface EventUpdateInput {
   picture?: Maybe<String>;
 }
 
-export interface PricesUpdateManyWithoutEventInput {
-  create?: Maybe<
-    PricesCreateWithoutEventInput[] | PricesCreateWithoutEventInput
-  >;
-  delete?: Maybe<PricesWhereUniqueInput[] | PricesWhereUniqueInput>;
-  connect?: Maybe<PricesWhereUniqueInput[] | PricesWhereUniqueInput>;
-  set?: Maybe<PricesWhereUniqueInput[] | PricesWhereUniqueInput>;
-  disconnect?: Maybe<PricesWhereUniqueInput[] | PricesWhereUniqueInput>;
+export interface PriceUpdateManyWithoutEventInput {
+  create?: Maybe<PriceCreateWithoutEventInput[] | PriceCreateWithoutEventInput>;
+  delete?: Maybe<PriceWhereUniqueInput[] | PriceWhereUniqueInput>;
+  connect?: Maybe<PriceWhereUniqueInput[] | PriceWhereUniqueInput>;
+  set?: Maybe<PriceWhereUniqueInput[] | PriceWhereUniqueInput>;
+  disconnect?: Maybe<PriceWhereUniqueInput[] | PriceWhereUniqueInput>;
   update?: Maybe<
-    | PricesUpdateWithWhereUniqueWithoutEventInput[]
-    | PricesUpdateWithWhereUniqueWithoutEventInput
+    | PriceUpdateWithWhereUniqueWithoutEventInput[]
+    | PriceUpdateWithWhereUniqueWithoutEventInput
   >;
   upsert?: Maybe<
-    | PricesUpsertWithWhereUniqueWithoutEventInput[]
-    | PricesUpsertWithWhereUniqueWithoutEventInput
+    | PriceUpsertWithWhereUniqueWithoutEventInput[]
+    | PriceUpsertWithWhereUniqueWithoutEventInput
   >;
-  deleteMany?: Maybe<PricesScalarWhereInput[] | PricesScalarWhereInput>;
+  deleteMany?: Maybe<PriceScalarWhereInput[] | PriceScalarWhereInput>;
   updateMany?: Maybe<
-    | PricesUpdateManyWithWhereNestedInput[]
-    | PricesUpdateManyWithWhereNestedInput
+    PriceUpdateManyWithWhereNestedInput[] | PriceUpdateManyWithWhereNestedInput
   >;
 }
 
-export interface PricesUpdateWithWhereUniqueWithoutEventInput {
-  where: PricesWhereUniqueInput;
-  data: PricesUpdateWithoutEventDataInput;
+export interface PriceUpdateWithWhereUniqueWithoutEventInput {
+  where: PriceWhereUniqueInput;
+  data: PriceUpdateWithoutEventDataInput;
 }
 
-export interface PricesUpdateWithoutEventDataInput {
-  status?: Maybe<PricesUpdatestatusInput>;
+export interface PriceUpdateWithoutEventDataInput {
+  status?: Maybe<PriceUpdatestatusInput>;
   price?: Maybe<Float>;
 }
 
-export interface PricesUpdatestatusInput {
+export interface PriceUpdatestatusInput {
   set?: Maybe<Status[] | Status>;
 }
 
-export interface PricesUpsertWithWhereUniqueWithoutEventInput {
-  where: PricesWhereUniqueInput;
-  update: PricesUpdateWithoutEventDataInput;
-  create: PricesCreateWithoutEventInput;
+export interface PriceUpsertWithWhereUniqueWithoutEventInput {
+  where: PriceWhereUniqueInput;
+  update: PriceUpdateWithoutEventDataInput;
+  create: PriceCreateWithoutEventInput;
 }
 
-export interface PricesScalarWhereInput {
+export interface PriceScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -785,18 +780,18 @@ export interface PricesScalarWhereInput {
   price_lte?: Maybe<Float>;
   price_gt?: Maybe<Float>;
   price_gte?: Maybe<Float>;
-  AND?: Maybe<PricesScalarWhereInput[] | PricesScalarWhereInput>;
-  OR?: Maybe<PricesScalarWhereInput[] | PricesScalarWhereInput>;
-  NOT?: Maybe<PricesScalarWhereInput[] | PricesScalarWhereInput>;
+  AND?: Maybe<PriceScalarWhereInput[] | PriceScalarWhereInput>;
+  OR?: Maybe<PriceScalarWhereInput[] | PriceScalarWhereInput>;
+  NOT?: Maybe<PriceScalarWhereInput[] | PriceScalarWhereInput>;
 }
 
-export interface PricesUpdateManyWithWhereNestedInput {
-  where: PricesScalarWhereInput;
-  data: PricesUpdateManyDataInput;
+export interface PriceUpdateManyWithWhereNestedInput {
+  where: PriceScalarWhereInput;
+  data: PriceUpdateManyDataInput;
 }
 
-export interface PricesUpdateManyDataInput {
-  status?: Maybe<PricesUpdatestatusInput>;
+export interface PriceUpdateManyDataInput {
+  status?: Maybe<PriceUpdatestatusInput>;
   price?: Maybe<Float>;
 }
 
@@ -1020,7 +1015,7 @@ export interface EventUpdateDataInput {
   location?: Maybe<String>;
   transport?: Maybe<Transport>;
   appointment?: Maybe<String>;
-  prices?: Maybe<PricesUpdateManyWithoutEventInput>;
+  prices?: Maybe<PriceUpdateManyWithoutEventInput>;
   endInscription?: Maybe<DateTimeInput>;
   startInscription?: Maybe<DateTimeInput>;
   start?: Maybe<DateTimeInput>;
@@ -1042,10 +1037,10 @@ export interface NewsUpdateManyMutationInput {
   content?: Maybe<String>;
 }
 
-export interface PricesCreateInput {
+export interface PriceCreateInput {
   id?: Maybe<ID_Input>;
   event: EventCreateOneWithoutPricesInput;
-  status?: Maybe<PricesCreatestatusInput>;
+  status?: Maybe<PriceCreatestatusInput>;
   price: Float;
 }
 
@@ -1070,9 +1065,9 @@ export interface EventCreateWithoutPricesInput {
   picture?: Maybe<String>;
 }
 
-export interface PricesUpdateInput {
+export interface PriceUpdateInput {
   event?: Maybe<EventUpdateOneRequiredWithoutPricesInput>;
-  status?: Maybe<PricesUpdatestatusInput>;
+  status?: Maybe<PriceUpdatestatusInput>;
   price?: Maybe<Float>;
 }
 
@@ -1103,8 +1098,8 @@ export interface EventUpsertWithoutPricesInput {
   create: EventCreateWithoutPricesInput;
 }
 
-export interface PricesUpdateManyMutationInput {
-  status?: Maybe<PricesUpdatestatusInput>;
+export interface PriceUpdateManyMutationInput {
+  status?: Maybe<PriceUpdatestatusInput>;
   price?: Maybe<Float>;
 }
 
@@ -1154,15 +1149,15 @@ export interface NewsSubscriptionWhereInput {
   NOT?: Maybe<NewsSubscriptionWhereInput[] | NewsSubscriptionWhereInput>;
 }
 
-export interface PricesSubscriptionWhereInput {
+export interface PriceSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PricesWhereInput>;
-  AND?: Maybe<PricesSubscriptionWhereInput[] | PricesSubscriptionWhereInput>;
-  OR?: Maybe<PricesSubscriptionWhereInput[] | PricesSubscriptionWhereInput>;
-  NOT?: Maybe<PricesSubscriptionWhereInput[] | PricesSubscriptionWhereInput>;
+  node?: Maybe<PriceWhereInput>;
+  AND?: Maybe<PriceSubscriptionWhereInput[] | PriceSubscriptionWhereInput>;
+  OR?: Maybe<PriceSubscriptionWhereInput[] | PriceSubscriptionWhereInput>;
+  NOT?: Maybe<PriceSubscriptionWhereInput[] | PriceSubscriptionWhereInput>;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -1201,9 +1196,9 @@ export interface EventPromise extends Promise<Event>, Fragmentable {
   location: () => Promise<String>;
   transport: () => Promise<Transport>;
   appointment: () => Promise<String>;
-  prices: <T = FragmentableArray<Prices>>(args?: {
-    where?: PricesWhereInput;
-    orderBy?: PricesOrderByInput;
+  prices: <T = FragmentableArray<Price>>(args?: {
+    where?: PriceWhereInput;
+    orderBy?: PriceOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -1236,9 +1231,9 @@ export interface EventSubscription
   location: () => Promise<AsyncIterator<String>>;
   transport: () => Promise<AsyncIterator<Transport>>;
   appointment: () => Promise<AsyncIterator<String>>;
-  prices: <T = Promise<AsyncIterator<PricesSubscription>>>(args?: {
-    where?: PricesWhereInput;
-    orderBy?: PricesOrderByInput;
+  prices: <T = Promise<AsyncIterator<PriceSubscription>>>(args?: {
+    where?: PriceWhereInput;
+    orderBy?: PriceOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -1271,9 +1266,9 @@ export interface EventNullablePromise
   location: () => Promise<String>;
   transport: () => Promise<Transport>;
   appointment: () => Promise<String>;
-  prices: <T = FragmentableArray<Prices>>(args?: {
-    where?: PricesWhereInput;
-    orderBy?: PricesOrderByInput;
+  prices: <T = FragmentableArray<Price>>(args?: {
+    where?: PriceWhereInput;
+    orderBy?: PriceOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -1298,21 +1293,21 @@ export interface EventNullablePromise
   picture: () => Promise<String>;
 }
 
-export interface Prices {
+export interface Price {
   id: ID_Output;
   status: Status[];
   price: Float;
 }
 
-export interface PricesPromise extends Promise<Prices>, Fragmentable {
+export interface PricePromise extends Promise<Price>, Fragmentable {
   id: () => Promise<ID_Output>;
   event: <T = EventPromise>() => T;
   status: () => Promise<Status[]>;
   price: () => Promise<Float>;
 }
 
-export interface PricesSubscription
-  extends Promise<AsyncIterator<Prices>>,
+export interface PriceSubscription
+  extends Promise<AsyncIterator<Price>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   event: <T = EventSubscription>() => T;
@@ -1320,8 +1315,8 @@ export interface PricesSubscription
   price: () => Promise<AsyncIterator<Float>>;
 }
 
-export interface PricesNullablePromise
-  extends Promise<Prices | null>,
+export interface PriceNullablePromise
+  extends Promise<Price | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   event: <T = EventPromise>() => T;
@@ -1338,7 +1333,7 @@ export interface User {
   city: String;
   NPA: Int;
   birthday: DateTimeOutput;
-  sexe?: Sexe;
+  sexe: Sexe;
   status: Status[];
 }
 
@@ -1551,56 +1546,56 @@ export interface AggregateNewsSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface PricesConnection {
+export interface PriceConnection {
   pageInfo: PageInfo;
-  edges: PricesEdge[];
+  edges: PriceEdge[];
 }
 
-export interface PricesConnectionPromise
-  extends Promise<PricesConnection>,
+export interface PriceConnectionPromise
+  extends Promise<PriceConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PricesEdge>>() => T;
-  aggregate: <T = AggregatePricesPromise>() => T;
+  edges: <T = FragmentableArray<PriceEdge>>() => T;
+  aggregate: <T = AggregatePricePromise>() => T;
 }
 
-export interface PricesConnectionSubscription
-  extends Promise<AsyncIterator<PricesConnection>>,
+export interface PriceConnectionSubscription
+  extends Promise<AsyncIterator<PriceConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PricesEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePricesSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PriceEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePriceSubscription>() => T;
 }
 
-export interface PricesEdge {
-  node: Prices;
+export interface PriceEdge {
+  node: Price;
   cursor: String;
 }
 
-export interface PricesEdgePromise extends Promise<PricesEdge>, Fragmentable {
-  node: <T = PricesPromise>() => T;
+export interface PriceEdgePromise extends Promise<PriceEdge>, Fragmentable {
+  node: <T = PricePromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface PricesEdgeSubscription
-  extends Promise<AsyncIterator<PricesEdge>>,
+export interface PriceEdgeSubscription
+  extends Promise<AsyncIterator<PriceEdge>>,
     Fragmentable {
-  node: <T = PricesSubscription>() => T;
+  node: <T = PriceSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregatePrices {
+export interface AggregatePrice {
   count: Int;
 }
 
-export interface AggregatePricesPromise
-  extends Promise<AggregatePrices>,
+export interface AggregatePricePromise
+  extends Promise<AggregatePrice>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregatePricesSubscription
-  extends Promise<AsyncIterator<AggregatePrices>>,
+export interface AggregatePriceSubscription
+  extends Promise<AsyncIterator<AggregatePrice>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -1799,47 +1794,47 @@ export interface NewsPreviousValuesSubscription
   content: () => Promise<AsyncIterator<String>>;
 }
 
-export interface PricesSubscriptionPayload {
+export interface PriceSubscriptionPayload {
   mutation: MutationType;
-  node: Prices;
+  node: Price;
   updatedFields: String[];
-  previousValues: PricesPreviousValues;
+  previousValues: PricePreviousValues;
 }
 
-export interface PricesSubscriptionPayloadPromise
-  extends Promise<PricesSubscriptionPayload>,
+export interface PriceSubscriptionPayloadPromise
+  extends Promise<PriceSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = PricesPromise>() => T;
+  node: <T = PricePromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = PricesPreviousValuesPromise>() => T;
+  previousValues: <T = PricePreviousValuesPromise>() => T;
 }
 
-export interface PricesSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PricesSubscriptionPayload>>,
+export interface PriceSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PriceSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PricesSubscription>() => T;
+  node: <T = PriceSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PricesPreviousValuesSubscription>() => T;
+  previousValues: <T = PricePreviousValuesSubscription>() => T;
 }
 
-export interface PricesPreviousValues {
+export interface PricePreviousValues {
   id: ID_Output;
   status: Status[];
   price: Float;
 }
 
-export interface PricesPreviousValuesPromise
-  extends Promise<PricesPreviousValues>,
+export interface PricePreviousValuesPromise
+  extends Promise<PricePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   status: () => Promise<Status[]>;
   price: () => Promise<Float>;
 }
 
-export interface PricesPreviousValuesSubscription
-  extends Promise<AsyncIterator<PricesPreviousValues>>,
+export interface PricePreviousValuesSubscription
+  extends Promise<AsyncIterator<PricePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   status: () => Promise<AsyncIterator<Status[]>>;
@@ -1880,7 +1875,7 @@ export interface UserPreviousValues {
   city: String;
   NPA: Int;
   birthday: DateTimeOutput;
-  sexe?: Sexe;
+  sexe: Sexe;
   status: Status[];
 }
 
@@ -1974,7 +1969,7 @@ export const models: Model[] = [
     embedded: false
   },
   {
-    name: "Prices",
+    name: "Price",
     embedded: false
   },
   {

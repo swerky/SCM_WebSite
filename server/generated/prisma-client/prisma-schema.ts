@@ -10,7 +10,7 @@ type AggregateNews {
   count: Int!
 }
 
-type AggregatePrices {
+type AggregatePrice {
   count: Int!
 }
 
@@ -30,7 +30,7 @@ type Event {
   location: String!
   transport: Transport
   appointment: String!
-  prices(where: PricesWhereInput, orderBy: PricesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Prices!]
+  prices(where: PriceWhereInput, orderBy: PriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Price!]
   endInscription: DateTime!
   startInscription: DateTime!
   start: DateTime!
@@ -53,7 +53,7 @@ input EventCreateInput {
   location: String!
   transport: Transport
   appointment: String!
-  prices: PricesCreateManyWithoutEventInput
+  prices: PriceCreateManyWithoutEventInput
   endInscription: DateTime!
   startInscription: DateTime!
   start: DateTime!
@@ -160,7 +160,7 @@ input EventUpdateDataInput {
   location: String
   transport: Transport
   appointment: String
-  prices: PricesUpdateManyWithoutEventInput
+  prices: PriceUpdateManyWithoutEventInput
   endInscription: DateTime
   startInscription: DateTime
   start: DateTime
@@ -176,7 +176,7 @@ input EventUpdateInput {
   location: String
   transport: Transport
   appointment: String
-  prices: PricesUpdateManyWithoutEventInput
+  prices: PriceUpdateManyWithoutEventInput
   endInscription: DateTime
   startInscription: DateTime
   start: DateTime
@@ -301,9 +301,9 @@ input EventWhereInput {
   appointment_not_starts_with: String
   appointment_ends_with: String
   appointment_not_ends_with: String
-  prices_every: PricesWhereInput
-  prices_some: PricesWhereInput
-  prices_none: PricesWhereInput
+  prices_every: PriceWhereInput
+  prices_some: PriceWhereInput
+  prices_none: PriceWhereInput
   endInscription: DateTime
   endInscription_not: DateTime
   endInscription_in: [DateTime!]
@@ -405,12 +405,12 @@ type Mutation {
   upsertNews(where: NewsWhereUniqueInput!, create: NewsCreateInput!, update: NewsUpdateInput!): News!
   deleteNews(where: NewsWhereUniqueInput!): News
   deleteManyNewses(where: NewsWhereInput): BatchPayload!
-  createPrices(data: PricesCreateInput!): Prices!
-  updatePrices(data: PricesUpdateInput!, where: PricesWhereUniqueInput!): Prices
-  updateManyPriceses(data: PricesUpdateManyMutationInput!, where: PricesWhereInput): BatchPayload!
-  upsertPrices(where: PricesWhereUniqueInput!, create: PricesCreateInput!, update: PricesUpdateInput!): Prices!
-  deletePrices(where: PricesWhereUniqueInput!): Prices
-  deleteManyPriceses(where: PricesWhereInput): BatchPayload!
+  createPrice(data: PriceCreateInput!): Price!
+  updatePrice(data: PriceUpdateInput!, where: PriceWhereUniqueInput!): Price
+  updateManyPrices(data: PriceUpdateManyMutationInput!, where: PriceWhereInput): BatchPayload!
+  upsertPrice(where: PriceWhereUniqueInput!, create: PriceCreateInput!, update: PriceUpdateInput!): Price!
+  deletePrice(where: PriceWhereUniqueInput!): Price
+  deleteManyPrices(where: PriceWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -573,60 +573,60 @@ type PageInfo {
   endCursor: String
 }
 
-type Prices {
+type Price {
   id: ID!
   event: Event!
   status: [Status!]!
   price: Float!
 }
 
-type PricesConnection {
+type PriceConnection {
   pageInfo: PageInfo!
-  edges: [PricesEdge]!
-  aggregate: AggregatePrices!
+  edges: [PriceEdge]!
+  aggregate: AggregatePrice!
 }
 
-input PricesCreateInput {
+input PriceCreateInput {
   id: ID
   event: EventCreateOneWithoutPricesInput!
-  status: PricesCreatestatusInput
+  status: PriceCreatestatusInput
   price: Float!
 }
 
-input PricesCreateManyWithoutEventInput {
-  create: [PricesCreateWithoutEventInput!]
-  connect: [PricesWhereUniqueInput!]
+input PriceCreateManyWithoutEventInput {
+  create: [PriceCreateWithoutEventInput!]
+  connect: [PriceWhereUniqueInput!]
 }
 
-input PricesCreatestatusInput {
+input PriceCreatestatusInput {
   set: [Status!]
 }
 
-input PricesCreateWithoutEventInput {
+input PriceCreateWithoutEventInput {
   id: ID
-  status: PricesCreatestatusInput
+  status: PriceCreatestatusInput
   price: Float!
 }
 
-type PricesEdge {
-  node: Prices!
+type PriceEdge {
+  node: Price!
   cursor: String!
 }
 
-enum PricesOrderByInput {
+enum PriceOrderByInput {
   id_ASC
   id_DESC
   price_ASC
   price_DESC
 }
 
-type PricesPreviousValues {
+type PricePreviousValues {
   id: ID!
   status: [Status!]!
   price: Float!
 }
 
-input PricesScalarWhereInput {
+input PriceScalarWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -649,83 +649,83 @@ input PricesScalarWhereInput {
   price_lte: Float
   price_gt: Float
   price_gte: Float
-  AND: [PricesScalarWhereInput!]
-  OR: [PricesScalarWhereInput!]
-  NOT: [PricesScalarWhereInput!]
+  AND: [PriceScalarWhereInput!]
+  OR: [PriceScalarWhereInput!]
+  NOT: [PriceScalarWhereInput!]
 }
 
-type PricesSubscriptionPayload {
+type PriceSubscriptionPayload {
   mutation: MutationType!
-  node: Prices
+  node: Price
   updatedFields: [String!]
-  previousValues: PricesPreviousValues
+  previousValues: PricePreviousValues
 }
 
-input PricesSubscriptionWhereInput {
+input PriceSubscriptionWhereInput {
   mutation_in: [MutationType!]
   updatedFields_contains: String
   updatedFields_contains_every: [String!]
   updatedFields_contains_some: [String!]
-  node: PricesWhereInput
-  AND: [PricesSubscriptionWhereInput!]
-  OR: [PricesSubscriptionWhereInput!]
-  NOT: [PricesSubscriptionWhereInput!]
+  node: PriceWhereInput
+  AND: [PriceSubscriptionWhereInput!]
+  OR: [PriceSubscriptionWhereInput!]
+  NOT: [PriceSubscriptionWhereInput!]
 }
 
-input PricesUpdateInput {
+input PriceUpdateInput {
   event: EventUpdateOneRequiredWithoutPricesInput
-  status: PricesUpdatestatusInput
+  status: PriceUpdatestatusInput
   price: Float
 }
 
-input PricesUpdateManyDataInput {
-  status: PricesUpdatestatusInput
+input PriceUpdateManyDataInput {
+  status: PriceUpdatestatusInput
   price: Float
 }
 
-input PricesUpdateManyMutationInput {
-  status: PricesUpdatestatusInput
+input PriceUpdateManyMutationInput {
+  status: PriceUpdatestatusInput
   price: Float
 }
 
-input PricesUpdateManyWithoutEventInput {
-  create: [PricesCreateWithoutEventInput!]
-  delete: [PricesWhereUniqueInput!]
-  connect: [PricesWhereUniqueInput!]
-  set: [PricesWhereUniqueInput!]
-  disconnect: [PricesWhereUniqueInput!]
-  update: [PricesUpdateWithWhereUniqueWithoutEventInput!]
-  upsert: [PricesUpsertWithWhereUniqueWithoutEventInput!]
-  deleteMany: [PricesScalarWhereInput!]
-  updateMany: [PricesUpdateManyWithWhereNestedInput!]
+input PriceUpdateManyWithoutEventInput {
+  create: [PriceCreateWithoutEventInput!]
+  delete: [PriceWhereUniqueInput!]
+  connect: [PriceWhereUniqueInput!]
+  set: [PriceWhereUniqueInput!]
+  disconnect: [PriceWhereUniqueInput!]
+  update: [PriceUpdateWithWhereUniqueWithoutEventInput!]
+  upsert: [PriceUpsertWithWhereUniqueWithoutEventInput!]
+  deleteMany: [PriceScalarWhereInput!]
+  updateMany: [PriceUpdateManyWithWhereNestedInput!]
 }
 
-input PricesUpdateManyWithWhereNestedInput {
-  where: PricesScalarWhereInput!
-  data: PricesUpdateManyDataInput!
+input PriceUpdateManyWithWhereNestedInput {
+  where: PriceScalarWhereInput!
+  data: PriceUpdateManyDataInput!
 }
 
-input PricesUpdatestatusInput {
+input PriceUpdatestatusInput {
   set: [Status!]
 }
 
-input PricesUpdateWithoutEventDataInput {
-  status: PricesUpdatestatusInput
+input PriceUpdateWithoutEventDataInput {
+  status: PriceUpdatestatusInput
   price: Float
 }
 
-input PricesUpdateWithWhereUniqueWithoutEventInput {
-  where: PricesWhereUniqueInput!
-  data: PricesUpdateWithoutEventDataInput!
+input PriceUpdateWithWhereUniqueWithoutEventInput {
+  where: PriceWhereUniqueInput!
+  data: PriceUpdateWithoutEventDataInput!
 }
 
-input PricesUpsertWithWhereUniqueWithoutEventInput {
-  where: PricesWhereUniqueInput!
-  update: PricesUpdateWithoutEventDataInput!
-  create: PricesCreateWithoutEventInput!
+input PriceUpsertWithWhereUniqueWithoutEventInput {
+  where: PriceWhereUniqueInput!
+  update: PriceUpdateWithoutEventDataInput!
+  create: PriceCreateWithoutEventInput!
 }
 
-input PricesWhereInput {
+input PriceWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -749,12 +749,12 @@ input PricesWhereInput {
   price_lte: Float
   price_gt: Float
   price_gte: Float
-  AND: [PricesWhereInput!]
-  OR: [PricesWhereInput!]
-  NOT: [PricesWhereInput!]
+  AND: [PriceWhereInput!]
+  OR: [PriceWhereInput!]
+  NOT: [PriceWhereInput!]
 }
 
-input PricesWhereUniqueInput {
+input PriceWhereUniqueInput {
   id: ID
 }
 
@@ -765,9 +765,9 @@ type Query {
   news(where: NewsWhereUniqueInput!): News
   newses(where: NewsWhereInput, orderBy: NewsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [News]!
   newsesConnection(where: NewsWhereInput, orderBy: NewsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NewsConnection!
-  prices(where: PricesWhereUniqueInput!): Prices
-  priceses(where: PricesWhereInput, orderBy: PricesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Prices]!
-  pricesesConnection(where: PricesWhereInput, orderBy: PricesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PricesConnection!
+  price(where: PriceWhereUniqueInput!): Price
+  prices(where: PriceWhereInput, orderBy: PriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Price]!
+  pricesConnection(where: PriceWhereInput, orderBy: PriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PriceConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
@@ -791,7 +791,7 @@ enum Status {
 type Subscription {
   event(where: EventSubscriptionWhereInput): EventSubscriptionPayload
   news(where: NewsSubscriptionWhereInput): NewsSubscriptionPayload
-  prices(where: PricesSubscriptionWhereInput): PricesSubscriptionPayload
+  price(where: PriceSubscriptionWhereInput): PriceSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
@@ -809,7 +809,7 @@ type User {
   city: String!
   NPA: Int!
   birthday: DateTime!
-  sexe: Sexe
+  sexe: Sexe!
   status: [Status!]!
 }
 
@@ -828,7 +828,7 @@ input UserCreateInput {
   city: String!
   NPA: Int!
   birthday: DateTime!
-  sexe: Sexe
+  sexe: Sexe!
   status: UserCreatestatusInput
 }
 
@@ -876,7 +876,7 @@ type UserPreviousValues {
   city: String!
   NPA: Int!
   birthday: DateTime!
-  sexe: Sexe
+  sexe: Sexe!
   status: [Status!]!
 }
 

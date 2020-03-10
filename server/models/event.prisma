@@ -4,7 +4,7 @@ type Event {
   location: String!
   transport: Transport
   appointment: String!
-  prices: [Prices] @scalarList(strategy: RELATION)
+  prices: [Price] @scalarList(strategy: RELATION)
   endInscription: DateTime!
   startInscription: DateTime!
   start: DateTime!
@@ -16,7 +16,7 @@ type Event {
 } 
 
 
-type Prices {
+type Price {
   id: ID! @id
   event: Event!  @relation(link: INLINE)
   status: [Status!]! @scalarList(strategy: RELATION)

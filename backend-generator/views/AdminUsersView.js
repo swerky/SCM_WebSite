@@ -1,18 +1,18 @@
 import React from 'react';
 import { Table, Tag } from 'antd';
 import {useQuery} from '@apollo/react-hooks';
-import {GET_USER} from '../../queries/User.queries.queries';
+import {GET_USERS} from '../../queries/users.queries';
 import { Spin, Alert } from 'antd';
 import {EditOutlined,DeleteOutlined} from '@ant-design/icons';
 import moment from 'moment';
 
 moment.locale('fr');
 
-const DATE_FORMAT = "DD.MM.YYYY";
+const DATE_viewAT = "DD.MM.YYYY";
 const COL_SIZE = 250;
 
-const AdminUserView = () => {
-  const { loading : queryLoading, error: queryError, data } = useQuery(GET_GET_USER);
+const AdminUsersView = () => {
+  const { loading : queryLoading, error: queryError, data } = useQuery(GET_GET_USERS);
 
   if(queryLoading) return <Spin size="large"/>
 
@@ -60,7 +60,7 @@ const AdminUserView = () => {
       title: 'Birthday',
       dataIndex: 'birthday',
       key: 'birthday',
-      render: birthday => (<span>{moment(birthday).format(DATE_FORMAT)}</span>)
+      render: birthday => (<span>{moment(birthday).viewat(DATE_viewAT)}</span>)
     },
     {
       title: 'Sexe',
@@ -97,4 +97,4 @@ const AdminUserView = () => {
   return (<Table className="tableData" columns={columns} dataSource={data.Users} scroll={{ x: x }}/>); // Check data name
 }
 
-export default AdminUserView;
+export default AdminUsersView;
