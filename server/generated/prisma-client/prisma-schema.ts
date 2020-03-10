@@ -35,6 +35,8 @@ type Event {
   startInscription: DateTime!
   start: DateTime!
   end: DateTime!
+  offert: String
+  informations: String
   organizers(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   picture: String
 }
@@ -56,6 +58,8 @@ input EventCreateInput {
   startInscription: DateTime!
   start: DateTime!
   end: DateTime!
+  offert: String
+  informations: String
   organizers: UserCreateManyInput
   picture: String
 }
@@ -80,6 +84,8 @@ input EventCreateWithoutPricesInput {
   startInscription: DateTime!
   start: DateTime!
   end: DateTime!
+  offert: String
+  informations: String
   organizers: UserCreateManyInput
   picture: String
 }
@@ -108,6 +114,10 @@ enum EventOrderByInput {
   start_DESC
   end_ASC
   end_DESC
+  offert_ASC
+  offert_DESC
+  informations_ASC
+  informations_DESC
   picture_ASC
   picture_DESC
 }
@@ -122,6 +132,8 @@ type EventPreviousValues {
   startInscription: DateTime!
   start: DateTime!
   end: DateTime!
+  offert: String
+  informations: String
   picture: String
 }
 
@@ -153,6 +165,8 @@ input EventUpdateDataInput {
   startInscription: DateTime
   start: DateTime
   end: DateTime
+  offert: String
+  informations: String
   organizers: UserUpdateManyInput
   picture: String
 }
@@ -167,6 +181,8 @@ input EventUpdateInput {
   startInscription: DateTime
   start: DateTime
   end: DateTime
+  offert: String
+  informations: String
   organizers: UserUpdateManyInput
   picture: String
 }
@@ -180,6 +196,8 @@ input EventUpdateManyMutationInput {
   startInscription: DateTime
   start: DateTime
   end: DateTime
+  offert: String
+  informations: String
   picture: String
 }
 
@@ -206,6 +224,8 @@ input EventUpdateWithoutPricesDataInput {
   startInscription: DateTime
   start: DateTime
   end: DateTime
+  offert: String
+  informations: String
   organizers: UserUpdateManyInput
   picture: String
 }
@@ -316,6 +336,34 @@ input EventWhereInput {
   end_lte: DateTime
   end_gt: DateTime
   end_gte: DateTime
+  offert: String
+  offert_not: String
+  offert_in: [String!]
+  offert_not_in: [String!]
+  offert_lt: String
+  offert_lte: String
+  offert_gt: String
+  offert_gte: String
+  offert_contains: String
+  offert_not_contains: String
+  offert_starts_with: String
+  offert_not_starts_with: String
+  offert_ends_with: String
+  offert_not_ends_with: String
+  informations: String
+  informations_not: String
+  informations_in: [String!]
+  informations_not_in: [String!]
+  informations_lt: String
+  informations_lte: String
+  informations_gt: String
+  informations_gte: String
+  informations_contains: String
+  informations_not_contains: String
+  informations_starts_with: String
+  informations_not_starts_with: String
+  informations_ends_with: String
+  informations_not_ends_with: String
   organizers_every: UserWhereInput
   organizers_some: UserWhereInput
   organizers_none: UserWhereInput

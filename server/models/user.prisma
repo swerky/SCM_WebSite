@@ -7,7 +7,7 @@ type User {
   city: String!
   NPA: Int!
   birthday: DateTime!
-  sexe: Sexe
+  sexe: Sexe!
   status: [Status]! @scalarList(strategy: RELATION)
 }
 

@@ -1,19 +1,20 @@
 #!/usr/bin/python
 
 class MemberVariable:
-  def __init__(self, name, typeVariable, obligatory):
+  def __init__(self, name, typeVariable, isList, obligatory):
     self.name = name
     self.typeVariable = typeVariable
+    self.isList = isList
     self.obligatory = obligatory
   def __str__(self):
-    return "name: " + self.name + " | typeVariable: " + self.typeVariable +" | obligatory: " + self.obligatory.__str__()
+    return "name: " + self.name + " | typeVariable: " + self.typeVariable +"| isList: " + self.isList.__str__() + "| obligatory: " + self.obligatory.__str__()
 
 class ObjectFile:
   def __init__(self):
     self.name = ""
     self.memberVariables = []
   def __str__(self):
-    strPrint = "OBJECT: \n name: " + self.name + "\n memberVariable:"
+    strPrint = "OBJECT: \n name: " + self.name + "\n memberVariables:"
     for member in self.memberVariables:
       strPrint += "\n" + "  - " + member.__str__()
     return strPrint
@@ -70,11 +71,20 @@ def generateDatastructre(model):
         print("Error closing nothing...")
     else:
       if objInCreation:
+        # isObligatory
         isObligatory = "!" in secondWord
         if isObligatory:
           secondWord = secondWord.replace("!", "")
+        # isList
+        isList = "[" in secondWord and "]" in secondWord
+        if isList:
+          secondWord = secondWord.replace("[", "")
+          secondWord = secondWord.replace("]", "")
+        # format
         firstWord = firstWord.replace(":","")
-        currentObj.memberVariables.append(MemberVariable(firstWord, secondWord, isObligatory))
+
+
+        currentObj.memberVariables.append(MemberVariable(firstWord, secondWord, isList, isObligatory))
       elif enumInCreation:
         currentEnum.values.append(firstWord)
   #printResult(objects, enums)

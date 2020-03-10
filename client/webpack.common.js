@@ -93,10 +93,10 @@ module.exports = {
           {
             loader: "less-loader", //1. Turns less into css
             options: {modifyVars: {
-                //'primary-color': '#1DA57A',
+                //'primary-color': '#FAFAFA',
                 'link-color': '#FAFAFA',
-                'text-color': '#FAFAFA',
-                'heading-color': '#FAFAFA',
+                //'text-color': '#FAFAFA',
+                //'heading-color': '#FAFAFA',
                 //'border-radius-base': '2px',
                 'font-size-base': '20px',
                 'font-family': "'Raleway', Helvetica, sans-serif",

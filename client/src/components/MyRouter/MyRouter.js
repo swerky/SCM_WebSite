@@ -7,6 +7,7 @@ import NewMember from '../NewMember/NewMember';
 import NewMemberFormContainer from '../NewMember/NewMemberFormContainer';
 import AdminUserView from '../AdminUser/AdminUserView';
 import AdminLayout from '../Admin/AdminLayout';
+import AdminUserAdd from '../AdminUser/AdminUserAdd';
 
 const AdminRoute = ({path, component}) => {
   return (
@@ -23,7 +24,8 @@ const MyRouter = () => {
       <Route path="/programme" exact component={Programme}/>
       <Route path="/devenirmembre" exact component={NewMember}/>
       <Route path="/devenirmembre/form" exact component={NewMemberFormContainer}/>
-      <AdminRoute path="/admin" component={AdminUserView}/>
+      <AdminRoute path="/adminuser" component={AdminUserView}/>
+      <AdminRoute path="/adminuseradd" component={AdminUserAdd}/>
       <Route component={NotFound}/>
     </Switch>
   );

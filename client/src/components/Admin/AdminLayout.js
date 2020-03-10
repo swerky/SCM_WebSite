@@ -9,22 +9,23 @@ import './AdminLayout.less';
 
 const AdminLayout = ({children}) => {
   const [collapsed, setCollapsed] = useState(false);
-  
+
   return (
-    <Layout style={{ minHeight: '100%' }}>
+    <Layout className="layoutAdmin">
       <Sider collapsible collapsed={collapsed} onCollapse={() => setCollapsed(!collapsed)}>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
           <Menu.Item key="1">
+            <UserOutlined/>
             <span>Membres</span>
           </Menu.Item>
           <Menu.Item key="2">
+            <CalendarOutlined />
             <span>Evenements</span>
           </Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }} />
-        <Content style={{ margin: '0 16px' }}>
+        <Content style={{ margin: '16px 16px' }}>
           {children}
         </Content>
       </Layout>

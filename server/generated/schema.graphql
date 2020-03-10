@@ -29,8 +29,10 @@ type Event {
   end: DateTime!
   endInscription: DateTime!
   id: ID!
+  informations: String
   location: String!
   name: String!
+  offert: String
   organizers(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]
   picture: String
   prices(after: String, before: String, first: Int, last: Int, orderBy: PricesOrderByInput, skip: Int, where: PricesWhereInput): [Prices!]
@@ -50,8 +52,10 @@ input EventCreateInput {
   end: DateTime!
   endInscription: DateTime!
   id: ID
+  informations: String
   location: String!
   name: String!
+  offert: String
   organizers: UserCreateManyInput
   picture: String
   prices: PricesCreateManyWithoutEventInput
@@ -75,8 +79,10 @@ input EventCreateWithoutPricesInput {
   end: DateTime!
   endInscription: DateTime!
   id: ID
+  informations: String
   location: String!
   name: String!
+  offert: String
   organizers: UserCreateManyInput
   picture: String
   start: DateTime!
@@ -100,10 +106,14 @@ enum EventOrderByInput {
   endInscription_DESC
   id_ASC
   id_DESC
+  informations_ASC
+  informations_DESC
   location_ASC
   location_DESC
   name_ASC
   name_DESC
+  offert_ASC
+  offert_DESC
   picture_ASC
   picture_DESC
   start_ASC
@@ -120,8 +130,10 @@ input EventUpdateDataInput {
   appointment: String
   end: DateTime
   endInscription: DateTime
+  informations: String
   location: String
   name: String
+  offert: String
   organizers: UserUpdateManyInput
   picture: String
   prices: PricesUpdateManyWithoutEventInput
@@ -134,8 +146,10 @@ input EventUpdateInput {
   appointment: String
   end: DateTime
   endInscription: DateTime
+  informations: String
   location: String
   name: String
+  offert: String
   organizers: UserUpdateManyInput
   picture: String
   prices: PricesUpdateManyWithoutEventInput
@@ -148,8 +162,10 @@ input EventUpdateManyMutationInput {
   appointment: String
   end: DateTime
   endInscription: DateTime
+  informations: String
   location: String
   name: String
+  offert: String
   picture: String
   start: DateTime
   startInscription: DateTime
@@ -174,8 +190,10 @@ input EventUpdateWithoutPricesDataInput {
   appointment: String
   end: DateTime
   endInscription: DateTime
+  informations: String
   location: String
   name: String
+  offert: String
   organizers: UserUpdateManyInput
   picture: String
   start: DateTime
@@ -239,6 +257,20 @@ input EventWhereInput {
   id_not_in: [ID!]
   id_not_starts_with: ID
   id_starts_with: ID
+  informations: String
+  informations_contains: String
+  informations_ends_with: String
+  informations_gt: String
+  informations_gte: String
+  informations_in: [String!]
+  informations_lt: String
+  informations_lte: String
+  informations_not: String
+  informations_not_contains: String
+  informations_not_ends_with: String
+  informations_not_in: [String!]
+  informations_not_starts_with: String
+  informations_starts_with: String
   location: String
   location_contains: String
   location_ends_with: String
@@ -268,6 +300,20 @@ input EventWhereInput {
   name_not_starts_with: String
   name_starts_with: String
   NOT: [EventWhereInput!]
+  offert: String
+  offert_contains: String
+  offert_ends_with: String
+  offert_gt: String
+  offert_gte: String
+  offert_in: [String!]
+  offert_lt: String
+  offert_lte: String
+  offert_not: String
+  offert_not_contains: String
+  offert_not_ends_with: String
+  offert_not_in: [String!]
+  offert_not_starts_with: String
+  offert_starts_with: String
   OR: [EventWhereInput!]
   organizers_every: UserWhereInput
   organizers_none: UserWhereInput

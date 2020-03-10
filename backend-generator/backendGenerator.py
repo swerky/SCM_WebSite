@@ -20,4 +20,4 @@ objects, enums = generateDatastructre(model)
 printResult(objects, enums)
 
 for obj in objects:
-  viewGenerator(obj)
+  viewGenerator(obj, enums)

@@ -275,4 +275,4 @@ const NewMemberForm = (props) => {
   );
 }
 
-export default Form.create({ name: 'new member' })(NewMemberForm);
+export default NewMemberForm;

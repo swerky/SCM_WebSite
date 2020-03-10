@@ -731,6 +731,8 @@ type EventObject =
   | { name: 'startInscription', args?: [] | false, alias?: string  } 
   | { name: 'start', args?: [] | false, alias?: string  } 
   | { name: 'end', args?: [] | false, alias?: string  } 
+  | { name: 'offert', args?: [] | false, alias?: string  } 
+  | { name: 'informations', args?: [] | false, alias?: string  } 
   | { name: 'organizers', args?: EventOrganizersArgs[] | false, alias?: string  } 
   | { name: 'picture', args?: [] | false, alias?: string  } 
 
@@ -745,6 +747,8 @@ type EventFields =
   | 'startInscription'
   | 'start'
   | 'end'
+  | 'offert'
+  | 'informations'
   | 'organizers'
   | 'picture'
 
@@ -856,6 +860,22 @@ export interface EventFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  offert: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  informations: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   organizers: {
@@ -2215,6 +2235,8 @@ type EventPreviousValuesObject =
   | { name: 'startInscription', args?: [] | false, alias?: string  } 
   | { name: 'start', args?: [] | false, alias?: string  } 
   | { name: 'end', args?: [] | false, alias?: string  } 
+  | { name: 'offert', args?: [] | false, alias?: string  } 
+  | { name: 'informations', args?: [] | false, alias?: string  } 
   | { name: 'picture', args?: [] | false, alias?: string  } 
 
 type EventPreviousValuesFields =
@@ -2227,6 +2249,8 @@ type EventPreviousValuesFields =
   | 'startInscription'
   | 'start'
   | 'end'
+  | 'offert'
+  | 'informations'
   | 'picture'
 
 
@@ -2309,6 +2333,22 @@ export interface EventPreviousValuesFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  offert: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  informations: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   picture: {
@@ -2956,6 +2996,34 @@ export interface EventWhereInput {
   end_lte?: string | null
   end_gt?: string | null
   end_gte?: string | null
+  offert?: string | null
+  offert_not?: string | null
+  offert_in?: string[]
+  offert_not_in?: string[]
+  offert_lt?: string | null
+  offert_lte?: string | null
+  offert_gt?: string | null
+  offert_gte?: string | null
+  offert_contains?: string | null
+  offert_not_contains?: string | null
+  offert_starts_with?: string | null
+  offert_not_starts_with?: string | null
+  offert_ends_with?: string | null
+  offert_not_ends_with?: string | null
+  informations?: string | null
+  informations_not?: string | null
+  informations_in?: string[]
+  informations_not_in?: string[]
+  informations_lt?: string | null
+  informations_lte?: string | null
+  informations_gt?: string | null
+  informations_gte?: string | null
+  informations_contains?: string | null
+  informations_not_contains?: string | null
+  informations_starts_with?: string | null
+  informations_not_starts_with?: string | null
+  informations_ends_with?: string | null
+  informations_not_ends_with?: string | null
   organizers_every?: UserWhereInput | null
   organizers_some?: UserWhereInput | null
   organizers_none?: UserWhereInput | null
@@ -3074,6 +3142,34 @@ export type EventWhereInputInputObject =
   | { name: 'end_lte', alias?: string  } 
   | { name: 'end_gt', alias?: string  } 
   | { name: 'end_gte', alias?: string  } 
+  | { name: 'offert', alias?: string  } 
+  | { name: 'offert_not', alias?: string  } 
+  | { name: 'offert_in', alias?: string  } 
+  | { name: 'offert_not_in', alias?: string  } 
+  | { name: 'offert_lt', alias?: string  } 
+  | { name: 'offert_lte', alias?: string  } 
+  | { name: 'offert_gt', alias?: string  } 
+  | { name: 'offert_gte', alias?: string  } 
+  | { name: 'offert_contains', alias?: string  } 
+  | { name: 'offert_not_contains', alias?: string  } 
+  | { name: 'offert_starts_with', alias?: string  } 
+  | { name: 'offert_not_starts_with', alias?: string  } 
+  | { name: 'offert_ends_with', alias?: string  } 
+  | { name: 'offert_not_ends_with', alias?: string  } 
+  | { name: 'informations', alias?: string  } 
+  | { name: 'informations_not', alias?: string  } 
+  | { name: 'informations_in', alias?: string  } 
+  | { name: 'informations_not_in', alias?: string  } 
+  | { name: 'informations_lt', alias?: string  } 
+  | { name: 'informations_lte', alias?: string  } 
+  | { name: 'informations_gt', alias?: string  } 
+  | { name: 'informations_gte', alias?: string  } 
+  | { name: 'informations_contains', alias?: string  } 
+  | { name: 'informations_not_contains', alias?: string  } 
+  | { name: 'informations_starts_with', alias?: string  } 
+  | { name: 'informations_not_starts_with', alias?: string  } 
+  | { name: 'informations_ends_with', alias?: string  } 
+  | { name: 'informations_not_ends_with', alias?: string  } 
   | { name: 'organizers_every', alias?: string  } 
   | { name: 'organizers_some', alias?: string  } 
   | { name: 'organizers_none', alias?: string  } 
@@ -3318,6 +3414,8 @@ export interface EventCreateInput {
   startInscription?: string
   start?: string
   end?: string
+  offert?: string | null
+  informations?: string | null
   organizers?: UserCreateManyInput | null
   picture?: string | null
 }
@@ -3333,6 +3431,8 @@ export type EventCreateInputInputObject =
   | { name: 'startInscription', alias?: string  } 
   | { name: 'start', alias?: string  } 
   | { name: 'end', alias?: string  } 
+  | { name: 'offert', alias?: string  } 
+  | { name: 'informations', alias?: string  } 
   | { name: 'organizers', alias?: string  } 
   | { name: 'picture', alias?: string  } 
   
@@ -3382,6 +3482,8 @@ export interface EventUpdateInput {
   startInscription?: string | null
   start?: string | null
   end?: string | null
+  offert?: string | null
+  informations?: string | null
   organizers?: UserUpdateManyInput | null
   picture?: string | null
 }
@@ -3396,6 +3498,8 @@ export type EventUpdateInputInputObject =
   | { name: 'startInscription', alias?: string  } 
   | { name: 'start', alias?: string  } 
   | { name: 'end', alias?: string  } 
+  | { name: 'offert', alias?: string  } 
+  | { name: 'informations', alias?: string  } 
   | { name: 'organizers', alias?: string  } 
   | { name: 'picture', alias?: string  } 
   
@@ -3857,6 +3961,8 @@ export interface EventUpdateManyMutationInput {
   startInscription?: string | null
   start?: string | null
   end?: string | null
+  offert?: string | null
+  informations?: string | null
   picture?: string | null
 }
 export type EventUpdateManyMutationInputInputObject =
@@ -3869,6 +3975,8 @@ export type EventUpdateManyMutationInputInputObject =
   | { name: 'startInscription', alias?: string  } 
   | { name: 'start', alias?: string  } 
   | { name: 'end', alias?: string  } 
+  | { name: 'offert', alias?: string  } 
+  | { name: 'informations', alias?: string  } 
   | { name: 'picture', alias?: string  } 
   
 export interface PricesCreateInput {
@@ -3903,6 +4011,8 @@ export interface EventCreateWithoutPricesInput {
   startInscription?: string
   start?: string
   end?: string
+  offert?: string | null
+  informations?: string | null
   organizers?: UserCreateManyInput | null
   picture?: string | null
 }
@@ -3917,6 +4027,8 @@ export type EventCreateWithoutPricesInputInputObject =
   | { name: 'startInscription', alias?: string  } 
   | { name: 'start', alias?: string  } 
   | { name: 'end', alias?: string  } 
+  | { name: 'offert', alias?: string  } 
+  | { name: 'informations', alias?: string  } 
   | { name: 'organizers', alias?: string  } 
   | { name: 'picture', alias?: string  } 
   
@@ -3953,6 +4065,8 @@ export interface EventUpdateWithoutPricesDataInput {
   startInscription?: string | null
   start?: string | null
   end?: string | null
+  offert?: string | null
+  informations?: string | null
   organizers?: UserUpdateManyInput | null
   picture?: string | null
 }
@@ -3966,6 +4080,8 @@ export type EventUpdateWithoutPricesDataInputInputObject =
   | { name: 'startInscription', alias?: string  } 
   | { name: 'start', alias?: string  } 
   | { name: 'end', alias?: string  } 
+  | { name: 'offert', alias?: string  } 
+  | { name: 'informations', alias?: string  } 
   | { name: 'organizers', alias?: string  } 
   | { name: 'picture', alias?: string  } 
   
@@ -4047,6 +4163,8 @@ export interface EventUpdateDataInput {
   startInscription?: string | null
   start?: string | null
   end?: string | null
+  offert?: string | null
+  informations?: string | null
   organizers?: UserUpdateManyInput | null
   picture?: string | null
 }
@@ -4061,6 +4179,8 @@ export type EventUpdateDataInputInputObject =
   | { name: 'startInscription', alias?: string  } 
   | { name: 'start', alias?: string  } 
   | { name: 'end', alias?: string  } 
+  | { name: 'offert', alias?: string  } 
+  | { name: 'informations', alias?: string  } 
   | { name: 'organizers', alias?: string  } 
   | { name: 'picture', alias?: string  } 
   
@@ -4238,6 +4358,10 @@ export type EventOrderByInputValues =
   | 'start_DESC'
   | 'end_ASC'
   | 'end_DESC'
+  | 'offert_ASC'
+  | 'offert_DESC'
+  | 'informations_ASC'
+  | 'informations_DESC'
   | 'picture_ASC'
   | 'picture_DESC'
   | 'createdAt_ASC'

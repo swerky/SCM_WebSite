@@ -269,6 +269,10 @@ export type EventOrderByInput =
   | "start_DESC"
   | "end_ASC"
   | "end_DESC"
+  | "offert_ASC"
+  | "offert_DESC"
+  | "informations_ASC"
+  | "informations_DESC"
   | "picture_ASC"
   | "picture_DESC";
 
@@ -413,6 +417,34 @@ export interface EventWhereInput {
   end_lte?: Maybe<DateTimeInput>;
   end_gt?: Maybe<DateTimeInput>;
   end_gte?: Maybe<DateTimeInput>;
+  offert?: Maybe<String>;
+  offert_not?: Maybe<String>;
+  offert_in?: Maybe<String[] | String>;
+  offert_not_in?: Maybe<String[] | String>;
+  offert_lt?: Maybe<String>;
+  offert_lte?: Maybe<String>;
+  offert_gt?: Maybe<String>;
+  offert_gte?: Maybe<String>;
+  offert_contains?: Maybe<String>;
+  offert_not_contains?: Maybe<String>;
+  offert_starts_with?: Maybe<String>;
+  offert_not_starts_with?: Maybe<String>;
+  offert_ends_with?: Maybe<String>;
+  offert_not_ends_with?: Maybe<String>;
+  informations?: Maybe<String>;
+  informations_not?: Maybe<String>;
+  informations_in?: Maybe<String[] | String>;
+  informations_not_in?: Maybe<String[] | String>;
+  informations_lt?: Maybe<String>;
+  informations_lte?: Maybe<String>;
+  informations_gt?: Maybe<String>;
+  informations_gte?: Maybe<String>;
+  informations_contains?: Maybe<String>;
+  informations_not_contains?: Maybe<String>;
+  informations_starts_with?: Maybe<String>;
+  informations_not_starts_with?: Maybe<String>;
+  informations_ends_with?: Maybe<String>;
+  informations_not_ends_with?: Maybe<String>;
   organizers_every?: Maybe<UserWhereInput>;
   organizers_some?: Maybe<UserWhereInput>;
   organizers_none?: Maybe<UserWhereInput>;
@@ -626,6 +658,8 @@ export interface EventCreateInput {
   startInscription: DateTimeInput;
   start: DateTimeInput;
   end: DateTimeInput;
+  offert?: Maybe<String>;
+  informations?: Maybe<String>;
   organizers?: Maybe<UserCreateManyInput>;
   picture?: Maybe<String>;
 }
@@ -679,6 +713,8 @@ export interface EventUpdateInput {
   startInscription?: Maybe<DateTimeInput>;
   start?: Maybe<DateTimeInput>;
   end?: Maybe<DateTimeInput>;
+  offert?: Maybe<String>;
+  informations?: Maybe<String>;
   organizers?: Maybe<UserUpdateManyInput>;
   picture?: Maybe<String>;
 }
@@ -947,6 +983,8 @@ export interface EventUpdateManyMutationInput {
   startInscription?: Maybe<DateTimeInput>;
   start?: Maybe<DateTimeInput>;
   end?: Maybe<DateTimeInput>;
+  offert?: Maybe<String>;
+  informations?: Maybe<String>;
   picture?: Maybe<String>;
 }
 
@@ -987,6 +1025,8 @@ export interface EventUpdateDataInput {
   startInscription?: Maybe<DateTimeInput>;
   start?: Maybe<DateTimeInput>;
   end?: Maybe<DateTimeInput>;
+  offert?: Maybe<String>;
+  informations?: Maybe<String>;
   organizers?: Maybe<UserUpdateManyInput>;
   picture?: Maybe<String>;
 }
@@ -1024,6 +1064,8 @@ export interface EventCreateWithoutPricesInput {
   startInscription: DateTimeInput;
   start: DateTimeInput;
   end: DateTimeInput;
+  offert?: Maybe<String>;
+  informations?: Maybe<String>;
   organizers?: Maybe<UserCreateManyInput>;
   picture?: Maybe<String>;
 }
@@ -1050,6 +1092,8 @@ export interface EventUpdateWithoutPricesDataInput {
   startInscription?: Maybe<DateTimeInput>;
   start?: Maybe<DateTimeInput>;
   end?: Maybe<DateTimeInput>;
+  offert?: Maybe<String>;
+  informations?: Maybe<String>;
   organizers?: Maybe<UserUpdateManyInput>;
   picture?: Maybe<String>;
 }
@@ -1146,6 +1190,8 @@ export interface Event {
   startInscription: DateTimeOutput;
   start: DateTimeOutput;
   end: DateTimeOutput;
+  offert?: String;
+  informations?: String;
   picture?: String;
 }
 
@@ -1168,6 +1214,8 @@ export interface EventPromise extends Promise<Event>, Fragmentable {
   startInscription: () => Promise<DateTimeOutput>;
   start: () => Promise<DateTimeOutput>;
   end: () => Promise<DateTimeOutput>;
+  offert: () => Promise<String>;
+  informations: () => Promise<String>;
   organizers: <T = FragmentableArray<User>>(args?: {
     where?: UserWhereInput;
     orderBy?: UserOrderByInput;
@@ -1201,6 +1249,8 @@ export interface EventSubscription
   startInscription: () => Promise<AsyncIterator<DateTimeOutput>>;
   start: () => Promise<AsyncIterator<DateTimeOutput>>;
   end: () => Promise<AsyncIterator<DateTimeOutput>>;
+  offert: () => Promise<AsyncIterator<String>>;
+  informations: () => Promise<AsyncIterator<String>>;
   organizers: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
     where?: UserWhereInput;
     orderBy?: UserOrderByInput;
@@ -1234,6 +1284,8 @@ export interface EventNullablePromise
   startInscription: () => Promise<DateTimeOutput>;
   start: () => Promise<DateTimeOutput>;
   end: () => Promise<DateTimeOutput>;
+  offert: () => Promise<String>;
+  informations: () => Promise<String>;
   organizers: <T = FragmentableArray<User>>(args?: {
     where?: UserWhereInput;
     orderBy?: UserOrderByInput;
@@ -1658,6 +1710,8 @@ export interface EventPreviousValues {
   startInscription: DateTimeOutput;
   start: DateTimeOutput;
   end: DateTimeOutput;
+  offert?: String;
+  informations?: String;
   picture?: String;
 }
 
@@ -1673,6 +1727,8 @@ export interface EventPreviousValuesPromise
   startInscription: () => Promise<DateTimeOutput>;
   start: () => Promise<DateTimeOutput>;
   end: () => Promise<DateTimeOutput>;
+  offert: () => Promise<String>;
+  informations: () => Promise<String>;
   picture: () => Promise<String>;
 }
 
@@ -1688,6 +1744,8 @@ export interface EventPreviousValuesSubscription
   startInscription: () => Promise<AsyncIterator<DateTimeOutput>>;
   start: () => Promise<AsyncIterator<DateTimeOutput>>;
   end: () => Promise<AsyncIterator<DateTimeOutput>>;
+  offert: () => Promise<AsyncIterator<String>>;
+  informations: () => Promise<AsyncIterator<String>>;
   picture: () => Promise<AsyncIterator<String>>;
 }
 

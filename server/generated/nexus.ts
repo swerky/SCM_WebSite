@@ -16,8 +16,10 @@ export interface NexusGenInputs {
     end: any; // DateTime!
     endInscription: any; // DateTime!
     id?: string | null; // ID
+    informations?: string | null; // String
     location: string; // String!
     name: string; // String!
+    offert?: string | null; // String
     organizers?: NexusGenInputs['UserCreateManyInput'] | null; // UserCreateManyInput
     picture?: string | null; // String
     prices?: NexusGenInputs['PricesCreateManyWithoutEventInput'] | null; // PricesCreateManyWithoutEventInput
@@ -38,8 +40,10 @@ export interface NexusGenInputs {
     end: any; // DateTime!
     endInscription: any; // DateTime!
     id?: string | null; // ID
+    informations?: string | null; // String
     location: string; // String!
     name: string; // String!
+    offert?: string | null; // String
     organizers?: NexusGenInputs['UserCreateManyInput'] | null; // UserCreateManyInput
     picture?: string | null; // String
     start: any; // DateTime!
@@ -50,8 +54,10 @@ export interface NexusGenInputs {
     appointment?: string | null; // String
     end?: any | null; // DateTime
     endInscription?: any | null; // DateTime
+    informations?: string | null; // String
     location?: string | null; // String
     name?: string | null; // String
+    offert?: string | null; // String
     organizers?: NexusGenInputs['UserUpdateManyInput'] | null; // UserUpdateManyInput
     picture?: string | null; // String
     prices?: NexusGenInputs['PricesUpdateManyWithoutEventInput'] | null; // PricesUpdateManyWithoutEventInput
@@ -63,8 +69,10 @@ export interface NexusGenInputs {
     appointment?: string | null; // String
     end?: any | null; // DateTime
     endInscription?: any | null; // DateTime
+    informations?: string | null; // String
     location?: string | null; // String
     name?: string | null; // String
+    offert?: string | null; // String
     organizers?: NexusGenInputs['UserUpdateManyInput'] | null; // UserUpdateManyInput
     picture?: string | null; // String
     prices?: NexusGenInputs['PricesUpdateManyWithoutEventInput'] | null; // PricesUpdateManyWithoutEventInput
@@ -76,8 +84,10 @@ export interface NexusGenInputs {
     appointment?: string | null; // String
     end?: any | null; // DateTime
     endInscription?: any | null; // DateTime
+    informations?: string | null; // String
     location?: string | null; // String
     name?: string | null; // String
+    offert?: string | null; // String
     picture?: string | null; // String
     start?: any | null; // DateTime
     startInscription?: any | null; // DateTime
@@ -99,8 +109,10 @@ export interface NexusGenInputs {
     appointment?: string | null; // String
     end?: any | null; // DateTime
     endInscription?: any | null; // DateTime
+    informations?: string | null; // String
     location?: string | null; // String
     name?: string | null; // String
+    offert?: string | null; // String
     organizers?: NexusGenInputs['UserUpdateManyInput'] | null; // UserUpdateManyInput
     picture?: string | null; // String
     start?: any | null; // DateTime
@@ -161,6 +173,20 @@ export interface NexusGenInputs {
     id_not_in?: string[] | null; // [ID!]
     id_not_starts_with?: string | null; // ID
     id_starts_with?: string | null; // ID
+    informations?: string | null; // String
+    informations_contains?: string | null; // String
+    informations_ends_with?: string | null; // String
+    informations_gt?: string | null; // String
+    informations_gte?: string | null; // String
+    informations_in?: string[] | null; // [String!]
+    informations_lt?: string | null; // String
+    informations_lte?: string | null; // String
+    informations_not?: string | null; // String
+    informations_not_contains?: string | null; // String
+    informations_not_ends_with?: string | null; // String
+    informations_not_in?: string[] | null; // [String!]
+    informations_not_starts_with?: string | null; // String
+    informations_starts_with?: string | null; // String
     location?: string | null; // String
     location_contains?: string | null; // String
     location_ends_with?: string | null; // String
@@ -190,6 +216,20 @@ export interface NexusGenInputs {
     name_not_starts_with?: string | null; // String
     name_starts_with?: string | null; // String
     NOT?: NexusGenInputs['EventWhereInput'][] | null; // [EventWhereInput!]
+    offert?: string | null; // String
+    offert_contains?: string | null; // String
+    offert_ends_with?: string | null; // String
+    offert_gt?: string | null; // String
+    offert_gte?: string | null; // String
+    offert_in?: string[] | null; // [String!]
+    offert_lt?: string | null; // String
+    offert_lte?: string | null; // String
+    offert_not?: string | null; // String
+    offert_not_contains?: string | null; // String
+    offert_not_ends_with?: string | null; // String
+    offert_not_in?: string[] | null; // [String!]
+    offert_not_starts_with?: string | null; // String
+    offert_starts_with?: string | null; // String
     OR?: NexusGenInputs['EventWhereInput'][] | null; // [EventWhereInput!]
     organizers_every?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     organizers_none?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
@@ -747,7 +787,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  EventOrderByInput: "appointment_ASC" | "appointment_DESC" | "createdAt_ASC" | "createdAt_DESC" | "end_ASC" | "end_DESC" | "endInscription_ASC" | "endInscription_DESC" | "id_ASC" | "id_DESC" | "location_ASC" | "location_DESC" | "name_ASC" | "name_DESC" | "picture_ASC" | "picture_DESC" | "start_ASC" | "start_DESC" | "startInscription_ASC" | "startInscription_DESC" | "transport_ASC" | "transport_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  EventOrderByInput: "appointment_ASC" | "appointment_DESC" | "createdAt_ASC" | "createdAt_DESC" | "end_ASC" | "end_DESC" | "endInscription_ASC" | "endInscription_DESC" | "id_ASC" | "id_DESC" | "informations_ASC" | "informations_DESC" | "location_ASC" | "location_DESC" | "name_ASC" | "name_DESC" | "offert_ASC" | "offert_DESC" | "picture_ASC" | "picture_DESC" | "start_ASC" | "start_DESC" | "startInscription_ASC" | "startInscription_DESC" | "transport_ASC" | "transport_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   NewsOrderByInput: "content_ASC" | "content_DESC" | "createdAt_ASC" | "createdAt_DESC" | "date_ASC" | "date_DESC" | "id_ASC" | "id_DESC" | "title_ASC" | "title_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   PricesOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "price_ASC" | "price_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   Sexe: "FEMALE" | "MALE" | "OTHER"
@@ -777,8 +817,10 @@ export interface NexusGenRootTypes {
     end: any; // DateTime!
     endInscription: any; // DateTime!
     id: string; // ID!
+    informations?: string | null; // String
     location: string; // String!
     name: string; // String!
+    offert?: string | null; // String
     picture?: string | null; // String
     start: any; // DateTime!
     startInscription: any; // DateTime!
@@ -937,8 +979,10 @@ export interface NexusGenFieldTypes {
     end: any; // DateTime!
     endInscription: any; // DateTime!
     id: string; // ID!
+    informations: string | null; // String
     location: string; // String!
     name: string; // String!
+    offert: string | null; // String
     organizers: NexusGenRootTypes['User'][] | null; // [User!]
     picture: string | null; // String
     prices: NexusGenRootTypes['Prices'][] | null; // [Prices!]
